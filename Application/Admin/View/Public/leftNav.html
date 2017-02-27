@@ -1,0 +1,118 @@
+<!-- BEGIN CONTAINER -->
+	<div class="page-container">
+		<!-- BEGIN SIDEBAR -->
+		<div class="page-sidebar nav-collapse collapse">
+			<!-- BEGIN SIDEBAR MENU 导航条-->        
+			<ul class="page-sidebar-menu">
+				<li>
+					<!-- BEGIN SIDEBAR TOGGLER BUTTON -->
+					<div class="sidebar-toggler hidden-phone"></div>
+					<!-- BEGIN SIDEBAR TOGGLER BUTTON -->
+				</li>
+				<li>
+					<br />
+				</li>
+
+				<li class="<if condition="$_SESSION['nav'] eq 'index'">active</if>">
+					<a href="{:U('Admin/Index/index')}">
+					<i class="icon-cogs"></i> 
+					<span class="title">系统参数</span>
+					<span class="selected"></span>
+					</a>
+				</li>
+				
+				
+				<if condition="session('admin_id') eq 1">
+				<li class="<if condition="strstr($_SESSION['nav'],'admin')">active open</if>">
+					<a href="javascript:;">
+					<i class="icon-group"></i> 
+					<span class="title">管理员管理</span>
+					<span class="arrow <if condition="strstr($_SESSION['nav'],'admin')">open</if>"></span>
+					</a>
+					<ul class="sub-menu">
+						<li class="<if condition="$_SESSION['nav'] eq 'admin'">active</if>">
+							<a href="{:U('Admin/Admin/admin')}">
+							人员管理</a>
+						</li>
+						
+					</ul>
+				</li>
+				
+				<li class="<if condition="strstr($_SESSION['nav'],'nav')">active open</if>">
+					<a href="javascript:;">
+					<i class="icon-sitemap"></i> 
+					<span class="title">菜单管理</span>
+					<span class="arrow <if condition="strstr($_SESSION['nav'],'nav')">open</if>"></span>
+					</a>
+					<ul class="sub-menu">
+						<li class="<if condition="$_SESSION['nav'] eq 'nav_left'">active</if>">
+							<a href="{:U('Admin/Nav/left')}">
+							后台菜单</a>
+						</li>
+					
+						
+					</ul>
+				</li>
+				</if>
+
+
+				<volist name="leftNav" id="vo">
+				<?php
+					$wonderful=explode("_",$_SESSION['nav']);
+				 ?>
+				<li class="<if condition="$wonderful[0] eq $vo['name']">active open</if>">
+					<a href="javascript:;">
+					<i class="{$vo['icon']}"></i> 
+					<span class="title">{$vo['title']}</span>
+					<span class="arrow <if condition="$aaa[0] eq $vo['name']">open</if>"></span>
+					</a>
+					<ul class="sub-menu">
+						<volist name="vo['child']" key="j" id="vo1">
+						<li class="<if condition="$_SESSION['nav'] eq $vo1['name']">active</if> <if condition="strstr($_SESSION['nav'],$vo1['name'])">active open</if>">
+							<a href="__ROOT__/Admin/{$vo1['url']}.html">
+							{$vo1['title']}
+							<if condition="$vo1['child']">
+								<span class="arrow <if condition="strstr($_SESSION['nav'],$vo1['name'])">open</if>"></span>
+							</if>
+							</a>
+
+							<if condition="$vo1['child']">
+							<ul class="sub-menu">
+								<volist name="vo1['child']" key="k" id="vo2">
+								<li class="<if condition="$_SESSION['nav'] eq $vo2['name']">active</if>">
+									<a href="__ROOT__/Admin/{$vo2['url']}.html">{$vo2['title']}</a>
+								</li>
+								</volist>
+							</ul>
+							</if>
+
+						</li>
+						</volist>
+					</ul>
+				</li>
+				</volist>
+				<!-- <li class="<if condition="strstr($_SESSION['nav'],'banner')">active open</if>">
+					<a href="javascript:;">
+					<i class="icon-picture"></i> 
+					<span class="title">BANNER</span>
+					<span class="arrow <if condition="strstr($_SESSION['nav'],'banner')">open</if>"></span>
+					</a>
+					<ul class="sub-menu">
+						<li class="<if condition="$_SESSION['nav'] eq 'banner_index'">active</if>">
+							<a href="{:U('Admin/Banner/index')}">
+							主页BANNER</a>
+						</li>
+						<li class="<if condition="$_SESSION['nav'] eq 'banner_other'">active</if>">
+							<a href="{:U('Admin/Banner/other')}">
+							业主委托BANNER</a>
+						</li>
+						
+					</ul>
+				</li>-->
+				
+				
+
+			</ul>
+			<!-- END SIDEBAR MENU -->
+		</div>
+		<!-- END SIDEBAR -->

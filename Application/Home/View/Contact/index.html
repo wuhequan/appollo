@@ -1,0 +1,50 @@
+<include file="Public:header" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/contact.css" />
+
+
+<!-- stance --><div class="stance"></div><!-- stance -->
+<!-- banner  -->
+<div class="banner" style="background-image:url({$banner['imageUrl']})">
+    <div class="container">
+        <h6>{$banner['title']}</h6>
+        {$banner.content|html_entity_decode}
+    </div>
+</div>
+<!-- banner over -->
+<!-- main -->
+<div class="main">
+    <div class="container">
+        <div class="top">
+            <div class="left">
+                <h5>客户服务</h5>
+				<p>400&nbsp;电话：<span>{$data.phone}</span></p>
+                <p>工作时间：<span>{$data.time}</span></p>
+                
+            </div>            
+            <div class="left right">
+                <h5>技术支持</h5>
+               <p>咨询热线：<span>{$data.phone1}</span></p>
+                <p>邮箱地址：<span>{$data.email}</span></p>
+            </div>
+        </div>
+        <div class="bottom">
+            <!-- map -->
+            <div class="map" id="map">
+            </div>
+            <!-- map over -->
+            <div class="info">
+                <h5>联系方式</h5>
+                <p>广州市阿波罗智能科技有限公司</p>
+                <p>咨询热线：{$data.phone1}</p>
+				<volist name="data.info" id="v" key="k">
+                    <p><if condition="$k eq 1">加盟热线：<else/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</if>{$v}</p>
+                </volist>
+                <p>官网网址：<a href="">{$data.website}</a></p>
+                <p>地址：{$data.address}</p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- main over-->
+<include file="Public:footer" />
+<script src="__PUBLIC__/js/contact.js"></script>

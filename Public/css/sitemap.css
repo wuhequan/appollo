@@ -1,0 +1,120 @@
+.header .btns .btn{ visibility:hidden;}
+.banner .bannerSub{display:none;}
+
+.mainContent .mContent1{padding:40px 0;}
+.mainContent .mContent1 .mInfo:after{content: "020"; display: block; height: 0; clear: both;visibility:hidden;}
+.mainContent .mContent1 .mInfo ul{width:30%;margin-right:1.33%;float: left;}
+.mainContent .mContent1 .mInfo{width: 60%;margin:0 auto;overflow: hidden;text-align: center;font-size: 0;}
+.mainContent .mContent1 .mInfo .max-title{    font-size: 16px; font-weight: bold;color: #555; margin-bottom: 14px;}
+.mainContent .mContent1 .mInfo .title{    font-size: 12px;color:#666;font-weight: bold;    margin-bottom: 12px;}
+.mainContent .mContent1 .mInfo li{    text-decoration: none;
+    color: #ED7624;
+    outline: 0;line-height: 16px;font-family: "intel-clear","SimHei","SimSun",Arial,sans-serif !important;    margin-bottom: 12px;}
+.mainContent .mContent .mainTitle {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 176px;
+    height: 176px;
+    background: #69aedb;
+}
+.mainContent .mContent{position:relative;overflow:hidden;}
+.mainContent .mContent:after{content: "020"; display: block; height: 0; clear: both;visibility:hidden;}
+.mainContent .mContent .mainTitle{position:absolute;top:0px;left:0px;width:176px;height:176px;background:#69aedb;}
+.mainContent .mContent .mainTitle .center{position:absolute;top:0px;bottom:0px;height:68px;padding:0 30px;margin:auto 0;color:#fff;}
+.mainContent .mContent .mainTitle .title{line-height:28px;font-size:18px;}
+.mainContent .mContent .mainTitle .titleEn{line-height:20px;font-size:14px;}
+.mainContent .mContent .mainInfo{margin-left:264px;overflow:hidden;}
+.mainContent .mContent .mainInfo .mTitle{line-height:36px;color:#69ADDB;font-size:24px;padding:0 0 18px 0;}
+.mainContent .mContent .mainInfo .mInfo{line-height:26px;color:#8C8C8C;font-size:14px;padding-bottom:46px;}
+.mainContent .mContent1 {
+    padding: 40px 0;
+}
+.mainContent .mContent {
+    position: relative;
+    overflow: hidden;
+}
+.mainContent .mContent .mainTitle .center {
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    height: 68px;
+    padding: 0 30px;
+    margin: auto 0;
+    color: #fff;
+}
+.mainContent .mContent .mainTitle .title {
+    line-height: 28px;
+    font-size: 18px;
+}
+.mainContent .mContent .mainInfo {
+    margin-left: 264px;
+    overflow: hidden;
+}
+.mainContent .mContent .mainInfo .mTitle {
+    line-height: 36px;
+    color: #EB6100;
+    font-size: 24px;
+    padding: 0 0 18px 0;
+}
+@media (max-width: 639px) {
+.banner .bannerContent{height:150px;}
+.mainContent .mContent .mainTitle{position:relative;width:50%;height:80px;}
+.mainContent .mContent .mainTitle .center{height:42px;padding:0 16px;}
+.mainContent .mContent .mainTitle .title{line-height:24px;font-size:16px;}
+.mainContent .mContent .mainTitle .titleEn{line-height:14px;font-size:12px;}
+.mainContent .mContent .mainInfo{margin-left:0;}
+.mainContent .mContent .mainInfo .mTitle{line-height:22px;font-size:16px;padding:8px 0;}
+.mainContent .mContent .mainInfo .mInfo{line-height:24px;font-size:14px;padding-bottom:20px;}
+
+.mainContent .mContent1{padding:0px 0 20px 0;}
+}
+@media (min-width: 640px) and (max-width:1023px ) {
+.banner .bannerContent{height:300px;}
+.mainContent .mContent .mainTitle{position:relative;width:50%;height:100px;}
+.mainContent .mContent .mainTitle .center{height:48px;padding:0 20px;}
+.mainContent .mContent .mainTitle .title{line-height:28px;font-size:18px;}
+.mainContent .mContent .mainTitle .titleEn{line-height:20px;font-size:14px;}
+.mainContent .mContent .mainInfo{margin-left:0;}
+.mainContent .mContent .mainInfo .mTitle{line-height:36px;font-size:24px;padding:12px 0;}
+.mainContent .mContent .mainInfo .mInfo{line-height:24px;font-size:14px;padding-bottom:30px;}
+
+.mainContent .mContent1{padding:0px 0 30px 0;}
+}
+@media (min-width: 1024px) and (max-width:1440px ) {
+.banner .bannerContent{height:300px;}
+
+.mainContent .mContent1{padding:30px 0;}
+}
+@media (min-width: 1441px) and (max-width:1920px ) {
+
+}
+@media (max-width: 1440px) and (min-width: 1024px){
+.mainContent .mContent .mainTitle {
+    width: 150px;
+    height: 150px;
+}
+.mainInfo {
+    margin-left: 225px;
+}
+.mainContent .mContent1 {
+    padding: 30px 0;
+}
+}
+@media (max-width: 1023px) and (min-width: 640px){}
+.mainContent .mContent .mainInfo {
+    margin-left: 0;
+}
+.mainContent .mContent .mainTitle {
+    position: relative;
+    width: 50%;
+    height: 100px;
+}
+.mainContent .mContent .mainInfo .mTitle {
+    line-height: 36px;
+    font-size: 24px;
+    padding: 12px 0;
+    width: 42%;
+    text-align: center;
+}
+}

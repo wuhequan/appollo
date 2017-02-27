@@ -1,0 +1,103 @@
+<include file="Public:header" />
+
+
+<!-- END PAGE LEVEL STYLES -->
+<include file="Public:leftNav" />	
+		<!-- BEGIN PAGE -->
+		<div class="page-content">
+			
+			<!-- BEGIN PAGE CONTAINER-->
+			<div class="container-fluid">
+				<!-- BEGIN PAGE HEADER-->
+				<div class="row-fluid">
+					
+						<!-- BEGIN PAGE TITLE & BREADCRUMB-->
+						<h3 class="page-title">
+							{$title} <small>{$base.title}</small>
+						</h3>
+						<!-- END PAGE TITLE & BREADCRUMB-->
+						<!-- BEGIN DASHBOARD STATS -->
+				
+
+
+
+						<div class="row-fluid">
+							<div class="portlet box blue">
+								<div class="portlet-title">
+									<div class="caption"><i class="icon-edit"></i>管理员</div>
+									<div class="tools">
+										<a href="javascript:;" class="collapse"></a>
+										<a href="javascript:;" class="reload"></a>
+										<a href="javascript:;" class="remove"></a>
+									</div>
+								</div>
+
+								<div class="portlet-body">
+									<div class="btn-group">
+										<button class="btn green" onclick="javascript:window.location.href='{:U('Admin/Public/add',array('action'=>'Admin','tpl'=>'admin_add'))}'">
+										添加 <i class="icon-plus"></i>
+										</button>>
+									</div>
+									<table class="table table-striped table-hover table-bordered" id="sample_editable_1">
+										<thead>
+											<tr>
+												<th></th>
+												<th>管理员账号</th>
+												<th>状态</th>
+												<th>上次登陆时间</th>
+												<th></th>
+												
+												<th></th>
+											</tr>
+										</thead>
+										<tbody>
+											<volist name="data" id="vo">
+											<tr class="" >
+												<td>{$vo.admin_id}</td>
+												<td>{$vo.admin_username}</td>
+
+												<td>
+													<if condition="$vo['status'] eq 0">
+														<a href="#" onclick="changeStatus(this,'admin','admin_id',{$vo.admin_id},'status',{$vo['status']})" class="btn red icn-only"><i class="icon-remove-sign icon-white"></i></a>
+													<else/>
+														<a href="#" onclick="changeStatus(this,'admin','admin_id',{$vo.admin_id},'status',{$vo['status']})" class="btn green icn-only"><i class="icon-ok-sign icon-white"></i></a>
+													</if>
+												</td>
+												<td>{$vo.lastlogintime}</td>
+												<!-- <td><a href="javascript:window.location.href='{:U('Admin/Public/editor',array('id'=>$vo["admin_id"],'action'=>'Admin','tpl'=>'admin_editor'))}'">编辑信息</a></td> -->
+												<td><a href="javascript:window.location.href='{:U('Admin/Admin/role',array('dataid'=>$vo["admin_id"]))}'">编辑权限</a></td>
+												<td><if condition="$vo['admin_id'] neq 1"><a onclick="del(this,'admin','admin_id',{$vo.admin_id})">删除</a></if></td>
+												
+											</tr>
+											</volist>
+										</tbody>
+									</table>
+								</div>
+							</div>
+							<!-- END EXAMPLE TABLE PORTLET-->
+							
+						</div>
+						<!-- END DASHBOARD STATS -->
+				</div>
+				<!-- END PAGE HEADER-->
+			</div>
+			<!-- END PAGE CONTAINER-->    
+		</div>
+		<!-- END PAGE -->
+	</div>
+	<!-- END CONTAINER -->
+<include file="Public:footer" />
+	<!-- BEGIN PAGE LEVEL SCRIPTS -->
+	<script src="__PUBLIC__/metronic/js/app.js"></script>
+	<script src="__PUBLIC__/metronic/js/table-editable-shop.js"></script>
+	<script>
+		jQuery(document).ready(function() {    
+		   App.init(); 
+		   TableEditable.init();
+		});
+	</script>
+	<!-- END JAVASCRIPTS -->
+
+</body>
+<!-- END BODY -->
+</html>

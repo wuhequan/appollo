@@ -1,0 +1,165 @@
+<include file="Public:header" />
+
+<include file="Public:leftNav" />	
+		<!-- BEGIN PAGE -->
+		<div class="page-content">
+			
+			<!-- BEGIN PAGE CONTAINER-->
+			<div class="container-fluid">
+				<!-- BEGIN PAGE HEADER-->
+				<div class="row-fluid">
+					
+						<!-- BEGIN PAGE TITLE & BREADCRUMB-->
+						<h3 class="page-title">
+							{$title} <small>{$base.title}</small>
+						</h3>
+						<!-- END PAGE TITLE & BREADCRUMB-->
+						<!-- BEGIN DASHBOARD STATS -->
+						
+						<div class="row-fluid">
+
+
+
+							<div class="tab-pane active" >
+								<div class="portlet box blue ">
+									<div class="portlet-title">
+										<div class="caption"><i class="icon-reorder"></i></div>
+										<div class="tools">
+											<a href="javascript:;" class="collapse"></a>
+											
+											<a href="javascript:;" class="reload"></a>
+											<a href="javascript:;" class="remove"></a>
+										</div>
+									</div>
+									<div class="portlet-body form">
+										<!-- BEGIN FORM-->
+										<form action="#" class="form-horizontal form-bordered">
+											<h3 class="form-section">水印</h3>
+											
+
+											<div class="control-group">
+												<label class="control-label">是否开启水印</label>
+												<div class="controls">
+													<if condition="$data['status'] eq 0">
+														<a href="javascript:;" onclick="changeStatus(this,'site_watres','site_watres_id',{$data.site_watres_id},'status',{$data['status']})" class="btn red icn-only"><i class="icon-remove-sign icon-white"></i></a>
+													<else/>
+														<a href="javascript:;" onclick="changeStatus(this,'site_watres','site_watres_id',{$data.site_watres_id},'status',{$data['status']})" class="btn green icn-only"><i class="icon-ok-sign icon-white"></i></a>
+													</if>
+													
+												</div>
+											</div>
+	
+
+											<div class="control-group">
+												<label class="control-label">水印图</label>
+												<div class="controls">
+													
+													<img id="imageShow" src="{$data.imageUrl}" />
+													<input type="hidden" id="imageUrl" value="{$data.imageUrl}" />
+													
+														<div id="queue"></div>
+														<input id="file_upload" name="file_upload" type="file" multiple="true">
+													<span class="help-inline" style="color:#f00;">图片比例 （799*262）</span>
+												</div>
+											</div>
+											<div class="control-group">
+												<label class="control-label">水印透明度：</label>
+												<div class="controls">
+													<input type="text" placeholder="Int" name="degree" id="degree" class="m-wrap large" value="{$data.degree}">
+													<span class="help-inline">1到100的数值</span>
+												</div>
+											</div>
+											<!-- <div class="control-group">
+												<label class="control-label">水印位置</label>
+												<div class="controls">
+													<select class='span3 m-wrap category' name='position' id='position' tabindex='1'>
+														<option <if condition="$data['position'] eq IMAGE_WATER_NORTHWEST">selected</if> value="IMAGE_WATER_NORTHWEST">左上角水印</option>
+														<option <if condition="$data['position'] eq IMAGE_WATER_NORTH">selected</if> value="IMAGE_WATER_NORTH">上居中水印</option>
+														<option <if condition="$data['position'] eq IMAGE_WATER_NORTHEAST">selected</if> value="IMAGE_WATER_NORTHEAST">右上角水印</option>
+														<option <if condition="$data['position'] eq IMAGE_WATER_WEST">selected</if> value="IMAGE_WATER_WEST">左居中水印</option>
+														<option <if condition="$data['position'] eq IMAGE_WATER_CENTER">selected</if> value="IMAGE_WATER_CENTER">居中水印</option>
+														<option <if condition="$data['position'] eq IMAGE_WATER_EAST">selected</if> value="IMAGE_WATER_EAST">右居中水印</option>
+														<option <if condition="$data['position'] eq IMAGE_WATER_SOUTHWEST">selected</if> value="IMAGE_WATER_SOUTHWEST">左下角水印</option>
+														<option <if condition="$data['position'] eq IMAGE_WATER_SOUTH">selected</if> value="IMAGE_WATER_SOUTH">下居中水印</option>
+														<option <if condition="$data['position'] eq IMAGE_WATER_SOUTHEAST">selected</if> value="IMAGE_WATER_SOUTHEAST">右下角水印</option>
+													</select>
+												</div>
+											</div> -->
+											
+											
+
+
+											<div class="form-actions">
+												<button type="button" onclick="submitClick()" class="btn blue"><i class="icon-ok"></i>保存</button>
+												<button type="button" class="btn" onclick="javascript:window.history.go(-1);">返回</button>
+											</div>
+										</form>
+										<!-- END FORM-->  
+									</div>
+								</div>
+							</div>
+
+
+
+
+
+							
+						</div>
+						<!-- END DASHBOARD STATS -->
+				</div>
+				<!-- END PAGE HEADER-->
+			</div>
+			<!-- END PAGE CONTAINER-->    
+		</div>
+		<!-- END PAGE -->
+	</div>
+	<!-- END CONTAINER -->
+<include file="Public:footer" />
+	
+	<!-- BEGIN PAGE LEVEL SCRIPTS -->
+	<script src="__PUBLIC__/metronic/js/app.js"></script>
+
+	<script>
+		jQuery(document).ready(function() {    
+		   App.init(); // initlayout and core plugins
+		});
+	</script>
+	<!-- END JAVASCRIPTS -->
+	<script type="text/javascript">
+		$(function(){
+			var showEle="imageShow";
+			var saveEle="imageUrl";
+			var ele="file_upload";
+
+			var imageObj=new images(timestamp,token,swf,uploader,showEle,saveEle,ele,"src");
+			setTimeout(imageObj.upload(),10);
+
+
+		});
+
+		function submitClick(){
+			
+			$.post(
+				"{:U('Site/waters_Submit')}",
+				{
+					
+					'imageUrl':$("#imageUrl").val(),
+					'degree':$("#degree").val(),
+					'position':$('#position option:selected') .val()
+
+				},
+				function(data){
+					if(data==1){
+		                successNo();
+					}else{
+						errorNo();
+					}
+				}
+				
+			);
+		}
+	</script>
+</body>
+<!-- END BODY -->
+
+</html>

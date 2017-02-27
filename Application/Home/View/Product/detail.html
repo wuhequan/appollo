@@ -1,0 +1,166 @@
+<include file="Public:header" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/porduct-details.css" />
+
+<!-- stance -->
+<div class="stance"></div>
+<!-- stance -->
+<!-- main -->
+<div class="main">
+    <div class="container">
+        <div class="banner06">
+            <div class="box">
+                <ul>
+                    <volist name="data.maxUrl" id="v">
+                        <li style="background-image:url({$v})">
+                        </li>
+                    </volist>
+
+                </ul>
+            </div>
+            <div class="title-big">
+            <div class="show"></div>
+            <div class="left11 ts">
+                </div>
+                <div class="right11 ts"></div>
+            </div>
+        </div>
+        <div class="banner">
+            <volist name="data.maxUrl" id="v">
+                <div class="content">
+                    <div class="container">
+                        <img src="{$v}" alt="" />
+                    </div>
+                </div>  
+            </volist>          
+            
+            <div class="max-container">
+                <div class="btn left" onclick="banner.todo({'direc':'-'})"></div>
+                <div class="btn right"onclick="banner.todo({'direc':'+'})"></div>
+            </div>
+        </div>
+        <div class="info">
+            <h4>{$data.title}</h4>
+            <span>{$data.title1}</span>
+			<div class="show"><div class="p_box">{$data.content|html_entity_decode}</div></div>
+        </div>
+    </div>
+</div>
+<!-- main over -->
+<!-- parameter -->
+<div class="parameter">
+    <div class="container">
+        <h4>产品参数</h4>
+        <span class="link"></span>
+        <ul>
+            <li>
+                <if condition="$data.title neq '' "> 
+                    <p><em>型号：</em><span>{$data.title}</span></p>
+                </if>
+                <if condition="$data.power neq '' "> 
+                    <p><em>功耗：</em><span>{$data.power}</span></p>
+                </if>
+                <if condition="$data.norms neq '' "> 
+                    <p><em>规格：</em><span>{$data.norms}</span></p>
+                </if>
+            </li>            
+            <li>
+                <if condition="$data.source neq '' "> 
+                    <p><em>电源：</em><span>{$data.source}</span></p>
+                </if>
+                <if condition="$data.electricize neq '' "> 
+                    <p><em>充电方式：</em><span>{$data.electricize}</span></p>
+                </if>
+                <if condition="$data.networking neq '' ">
+                    <p><em>组网方式：</em><span>{$data.networking}</span></p>
+                </if>
+            </li>            
+            <li>
+                <if condition="$data.color neq '' "> 
+                    <p><em>颜色：</em><span>{$data.color}</span></p>
+                </if>
+            </li>
+        </ul>
+    </div>
+</div>
+<!-- parameter over -->
+<!-- imgs -->
+<notempty name="data.maxUrl1">
+<div class="imgs">
+    <div class="container">
+        <volist name="data.maxUrl1" id="v"  key="k">
+            <p><img src="{$v}" alt="" /></p>
+        </volist>
+    </div>
+</div>
+</notempty>
+<!-- imgs over -->
+<!-- banner -->
+<h3 class="title00">探索其它案例</h3>
+<span class="link"></span>
+<div class="bigBanner01">
+    <div class="banner01">
+        <volist name="arr" id="v" >     
+            <div class="content01">
+                 <div class="container01">
+                    <volist name="v" id="vv"  key="k">
+                        <a href="{:U('Product/detail')}?pid={$vv.product_id}">  
+                            <div class="cont <if condition="$k%4 eq 0">nor</if>">
+                                 <div class="imgBox">
+                                     <img src="{$vv.imageUrl}" alt="" />
+                                 </div>
+                                 <div class="info">
+                                     <h5>{$vv.title1}</h5>
+                                     <p>{$vv.title}</p>
+                                 </div>
+                            </div>
+                        </a>            
+                    </volist>  
+                 </div>
+            </div>    
+        </volist>             
+        <div class="max-container01">
+            <div class="btn01 left-btn01" onclick="banner01.todo({'direc':'-'})"></div>
+            <div class="btn01 right-btn01" onclick="banner01.todo({'direc':'+'})"></div>
+        </div>
+    </div>
+</div>
+<!-- banner over --> 
+<include file="Public:footer" />
+<script src="__PUBLIC__/js/keepScroll.js"></script>
+<script src="__PUBLIC__/js/nav.js"></script>
+<script src="__PUBLIC__/js/show.js"></script>
+<script src="__PUBLIC__/js/case.js"></script>
+<script src="__PUBLIC__/js/series02.js"></script><script type="text/javascript">
+$(function(){
+    function s(e){
+        $(e).children().slideToggle(400)
+    };
+    $('.header .customer .child').click(function(event) {
+        var i = $(this);
+        s(i)
+    });
+    $('.header .mobile').click(function(event) {
+        $('.nav').toggleClass('show');
+    });
+	var bl = true;
+	$('.main .info .lookMore').click(function(){
+		if(bl==true){
+			$(this).parent().parent().addClass('current');
+			$(this).html("收起");
+			bl=false;
+		}else{
+			$(this).parent().parent().removeClass('current');
+			bl =true;
+			$(this).html("查看更多");
+		}
+	});
+	var boxH = $('.main .info .show .p_box').height();
+	if(boxH<200){
+		$('.main .info .show').css({"height":"auto","overflow":"hidden"})
+	}
+})
+</script>
+erflow":"hidden"})
+	}
+})
+</script>

@@ -1,0 +1,84 @@
+<include file="Public:header" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/activity.css" />
+
+
+<!-- stance --><div class="stance"></div><!-- stance -->
+<!-- banner  -->
+<div class="banner" style="background-image:url({$banner['imageUrl']})">
+    <div class="container">
+        <h6>{$banner.title}</h6>
+        <p>{$banner.content|html_entity_decode}</p>
+    </div>
+</div>
+<!-- banner over -->
+<div class="title01">
+    <a href="{:U('Vip/information')}"><div class="list on">活动资讯</div></a>
+    <a href="{:U('Vip/load')}"><div class="list">资料下载</div></a>
+</div>
+<!-- main -->
+<div class="main">
+    <div class="container">
+        <ul>
+            <div id="list">    
+            <volist name="data" id="v"  key="k"> 
+                <li>
+                <a href="{:U('Vip/detail')}?id={$v.information_id}">
+                    <div class="left">
+                        <div class="imgs">
+                            <img src="{$v.imageUrl}" alt="" />
+                        </div>
+                        <div class="info">
+                            <h6>{$v.title}</h6>
+                            <span> {:date('Y-m-d',$v['showtime'])}</span>
+                            <p>{$v.info}</p>
+                        </div>
+                    </div></a>
+                    <a href="{:U('Vip/detail')}?id={$v.information_id}"><div class="right"></div></a>
+                </li> 
+            </volist>    
+            </div>       
+        </ul>
+    </div>
+</div>
+<!-- main over-->
+<include file="Public:footer" />
+
+<script type="text/javascript">
+var su = 0;
+
+    $(window).scroll(function () {
+
+    var scrollTop = $(this).scrollTop();
+    var scrollHeight = $(document).height();
+    var windowHeight = $(this).height();
+    if (scrollTop + windowHeight == scrollHeight) {
+         $.get("{:U('Vip/news_sub')}",{su:su},function(data){
+
+
+                    var html="";
+                    if(data==1)
+                    { 
+                        return;
+                    }
+                    for(var i in data) 
+                    {
+                      
+                       html+='<li><a href="{:U('Vip/detail')}?id='+data[i].information_id+'"><div class="left"><div class="imgs"><img src="'+data[i].imageUrl+'" alt="" /></div>';
+                       html+='<div class="info">';
+                       html+='<h6>'+data[i].title+'</h6>';
+                       html+='<span>'+data[i].showtime+'</span>';
+                       html+='<p>'+data[i].info+'</p></div></div></a>';
+                       html+='<a href="{:U('Vip/detail')}?id='+data[i].information_id+'" ><div class="right"></div></a></li>';
+                      
+
+
+                    }
+
+                    $("#list").append(html);
+                 
+                });
+            su =su+1;
+            }
+     });
+
+</script>

@@ -1,0 +1,75 @@
+<include file="Public:header" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/case-details.css" />
+
+<!-- stance --><div class="stance"></div><!-- stance -->
+<!-- main -->
+<div class="main">
+    <div class="container">
+        <h2>{$data.title}</h2>
+        <div class="banner06">
+            <div class="box">
+                <ul>
+                    <volist name="data.maxUrl" id="v">
+                        <li style="background-image:url({$v})">
+                        </li>
+                    </volist>
+
+                </ul>
+            </div>
+            <div class="title-big">
+            <div class="show"></div>
+            <div class="left11 ts">
+                </div>
+                <div class="right11 ts"></div>
+            </div>
+        </div>
+        <div class="banner">
+            <volist name="data.maxUrl" id="v">        
+                <div class="content" style="background-image:url({$v})">
+                    <div class="container"></div>
+                </div>
+            </volist>
+
+            <div class="max-container">
+                <div class="btn left" onclick="banner.todo({'direc':'-'})"></div>
+                <div class="btn right"onclick="banner.todo({'direc':'+'})"></div>
+            </div>
+        </div>
+        <div class="info">
+            <h4>项目介绍：</h4>
+              {$data.content|html_entity_decode}
+        </div>
+        <!-- banner -->
+        <h3>探索其它案例</h3>
+        <span class="link"></span>
+        <div class="bigBanner01">
+            <div class="banner01">
+                <volist name="arr" id="v" >                 
+                    <div class="content01">
+                         <div class="container01">
+                            <volist name="v" id="vv" > 
+                                <a href="{:U('Cases/detail')}?pid={$vv.project_id}">
+                                     <div class="cont">
+                                         <img src="{$vv.imageUrl}" alt="" />
+                                         <div class="bg"></div>
+                                     </div>
+                                </a>     
+                            </volist>  
+                         </div>
+                    </div>
+                </volist> 
+
+                <div class="max-container01">
+                    <div class="btn01 left-btn01" onclick="banner01.todo({'direc':'-'})"></div>
+                    <div class="btn01 right-btn01" onclick="banner01.todo({'direc':'+'})"></div>
+                </div>
+            </div>
+        </div>
+        <!-- banner over --> 
+    </div>
+</div>
+<include file="Public:footer" />
+<script src="__PUBLIC__/js/nav.js"></script>
+<script src="__PUBLIC__/js/case.js"></script>
+<script src="__PUBLIC__/js/series02.js"></script>
+<script src="__PUBLIC__/js/show.js"></script>

@@ -1,0 +1,35 @@
+<include file="Public:header" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/new-details.css" />
+
+
+<!-- stance --><div class="stance"></div><!-- stance -->
+<!-- main -->
+<div class="main">
+    <div class="container">
+        <div class="top">
+            <h5>{$data.title}</h5>
+            <p> {:date('Y-m-d',$data['showtime'])}</p>
+        </div>
+        <div class="content">
+           {$data.content|html_entity_decode}
+           
+           
+        </div>
+        <div class="bottom">
+           
+           <div class="return">
+                <a href="javascript:void(history.back())"  class="btn" >返回</a>
+           </div> 
+        </div>
+    </div>
+</div>
+
+<!-- main over -->
+<include file="Public:footer" />
+
+<include file="Public:footer" />
+<script>
+function back(){
+location.href=history.go(-1);
+}
+</script>

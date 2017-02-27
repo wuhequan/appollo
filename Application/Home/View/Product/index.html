@@ -1,0 +1,143 @@
+<include file="Public:header" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/product.css" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/swiper.min.css" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/indexAn.css" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/nav.css" />
+
+<!-- stance --><div class="stance"></div><!-- stance -->
+<!-- banner  -->
+<div class="banner" style="background-image:url({$banner['imageUrl']})">
+    <div class="container">
+        <h6>{$banner.title}</h6>
+        <p>{$banner.content|html_entity_decode}</p>
+    </div>
+</div>
+<!-- banner over -->
+<!-- nav -->
+<div class="nav-box">
+    <div class="two-nav">
+        <div class="mobile-nav00">
+            <div class="mobile-navChil">
+                <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <volist name="classify" id="v">                 
+                         <div class="swiper-slide <if condition="($Think.get.pid eq $v[product_classify_id]) OR ($pre_pid eq $v[product_classify_id])">kuai</if>">
+                        <!-- <span onclick="javascript:window.location.href='{:U('Product/index')}?pid={$v.product_classify_id}'">{$v.title}</span> -->
+                            <a href="{:U('Product/index')}?pid={$v.product_classify_id}">{$v.title}</a>
+                        </div>
+                    </volist>
+                </div>
+
+                <!-- Add Pagination -->
+                <div class="swiper-pagination"></div>
+                <!-- Add Arrows -->
+                <a href="" class="nexts">
+                    <div class="swiper-button-next">
+                        <img src="__PUBLIC__/images/new/right.png" alt="" />
+                    </div>
+                </a>
+                <a href="" class="prevs">
+                    <div class="swiper-button-prev">
+                        <img src="__PUBLIC__/images/new/left.png" alt="" />
+                    </div>
+                </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- nav over -->
+<!-- product -->
+<div class="product">
+  <div id="list">   
+    <volist name="data" id="v">
+      <div class="list-box">
+          <volist name="v" id="vv">
+            <a href="{:U('Product/detail')}?pid={$vv.product_id}">       
+                <div class="list">
+                <div class="imgBox">
+                    <img src="{$vv.imageUrl}" alt="" />
+                </div>
+                <div class="infos">
+                    <h6>{$vv.title}</h6>
+                    <p>{$vv.type}</p>
+                </div>
+                </div>  
+            </a>
+          </volist>
+      </div>
+    </volist>
+  </div>
+</div>
+<div class="lookMore">查看更多</div>
+<!-- product over-->
+<include file="Public:footer" />
+<script src="__PUBLIC__/js/nav01.js"></script>
+<!-- <script src="__PUBLIC__/js/toggleClass.js"></script> -->
+<script type="text/javascript" src="__PUBLIC__/js/swiper.min.js"></script>
+<script type="text/javascript">
+
+function ligouzi(i){
+    var mySwiper = new Swiper('.swiper-container',{
+        pagination: '.swiper-pagination',
+        // nextButton: '.swiper-button-next',
+        // prevButton: '.swiper-button-prev',
+        slidesPerView: 3,
+        initialSlide :i,
+        loop:true,
+        centeredSlides : true,
+        onlyExternal : true
+    })
+}
+$(".swiper-slide").each(function(i,n){
+    if($(this).hasClass("kuai")){
+        new ligouzi(i);
+    }
+});
+</script>
+
+
+
+<script type="text/javascript">
+function GetQueryString(name)
+{
+     var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+     var r = window.location.search.substr(1).match(reg);
+     if(r!=null)return  unescape(r[2]); return null;
+}
+var pid=GetQueryString("pid");
+var pids=GetQueryString("pids");
+
+
+var su = 0;
+
+   $('.lookMore').click(function(){
+         $.get("{:U('Product/product_sub')}",{su:su,pid:pid,pids:pids},function(data){
+
+
+                    var html="";
+                    if(data==1)
+                    {
+                         $('.lookMore').html('无更多产品');
+                        return;
+                    }
+                    html+='<div class="list-box">';
+                    for(var i in data) 
+                    {
+                       html+='<a href="{:U('Product/detail')}?pid='+data[i].product_id+'"><div class="list">';
+                       html+='<div class="imgBox"><img src="'+data[i].imageUrl+'" alt="" /></div><div class="infos">';
+                       html+=' <h6>'+data[i].title+'</h6>';
+                       html+=' <p>'+data[i].type+'</p></div></div></a> ';
+                    }
+                    html+='</div> ';
+                    $("#list").append(html);
+                 
+                });
+            su =su+1;
+            
+     });
+    var nexts=$('.kuai').next('.swiper-slide').find('a').attr('href');
+    $('.nexts').attr('href',nexts);
+    var prevs=$('.kuai').prev('.swiper-slide').find('a').attr('href');
+    $('.prevs').attr('href',prevs);
+</script>

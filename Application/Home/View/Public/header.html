@@ -1,0 +1,306 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+<title><if condition='$data["title"]'>{$data['title']}<else/>{$meta['headtitle']}</if></title>
+    <meta name="author" content="<if condition='$data["author"]'>{$data['author']}<else/>{$meta['author']}</if>"/>
+    <meta name="copyright" content="<if condition='$data["copyright"]'>{$data['copyright']}<else/>{$meta['copyright']}</if>"/>
+    <meta name="description" content="<if condition='$data["description"]'>{$data['description']}<else/>{$meta['description']}</if>"/>
+    <meta name="keywords" content="<if condition='$data["keywords"]'>{$data['keywords']}<else/>{$meta['keywords']}</if>">
+    <meta name="searchtitle" content="<if condition='$data["searchtitle"]'>{$data['searchtitle']}<else/>{$meta['searchtitle']}</if>"/>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/base.css" />
+
+
+</head>
+
+<body>
+<!-- header -->
+<div class="header">
+    <div class="wrap">
+        <a href="{:U('Index/index')}"><img class="logo" src="__PUBLIC__/images/bigLogo.png" /></a>
+        <a href="javascript:;" class="mobile"><img src="__PUBLIC__/images/mobile.png" alt=""/></a>
+        <ul class="nav">
+            <div class="navTop" ></div>
+            <li <if condition="CONTROLLER_NAME eq Index">class="on"</if>>
+                <a href="{:U('Index/index')}"><p class="title">首页</p></a>
+            </li>
+            <!-- 关于我们 -->
+            <li <if condition="CONTROLLER_NAME eq About">class="on"</if>>
+                <a href="{:U('About/brand')}"><p class="title">关于我们</p></a>
+                <div class="child">
+                    <div class="info">
+                        <div class="left">
+                            <div class="h s">
+                                <a href="{:U('About/brand')}">企业简介</a>
+                            </div>
+                            <div class="h">
+                                <a href="{:U('About/culture')}">
+                                企业文化
+                                </a>
+                            </div>
+                            <div class="h">
+                                <a href="{:U('About/honor')}">企业荣誉</a>
+                            </div>
+                            <div class="h">
+                                <a href="{:U('About/info')}">
+                                光辉历程
+                                </a>
+                            </div>
+                            <!-- <div class="h">
+                                <a href="{:U('About/video')}">视频中心</a>
+                            </div> -->
+                        </div>
+                        <div class="right">
+                            <div class="imgs00">
+                                <img src="__PUBLIC__/images/index/1.jpg" alt="" />
+                            </div>
+                            <div class="imgs00">
+                                <img src="__PUBLIC__/images/index/1.jpg" alt="" />
+                            </div>
+                            <div class="imgs00">
+                                <img src="__PUBLIC__/images/index/1.jpg" alt="" />
+                            </div> 
+                            <div class="imgs00">
+                                <img src="__PUBLIC__/images/index/1.jpg" alt="" />
+                            </div> 
+                            <div class="imgs00">
+                                <img src="__PUBLIC__/images/index/1.jpg" alt="" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <!-- 新闻中心 -->
+            <li <if condition="CONTROLLER_NAME eq News">class="on"</if>>
+                <a href="{:U('News/index')}?pid={$first.news_classify_id}"><p class="title">新闻中心</p></a>
+                <div class="child">
+                    <div class="info">
+                        <div class="left">
+                            <volist name="arr" id="v"  key="k">
+                                <div class="h">
+                                    <a href="{:U('News/index')}?pid={$v.news_classify_id}">
+                                    {$v.title}
+                                    </a>
+                                </div>
+                            </volist>
+                                <div class="h">
+                                    <a href="{:U('News/video1')}">
+                                    公司视频
+                                    </a>
+                                </div>
+
+                        </div>
+                        <div class="right">
+                            <div class="imgs00">
+                                <img src="__PUBLIC__/images/index/4.jpg" alt="" />
+                            </div>
+                            <div class="imgs00">
+                                <img src="__PUBLIC__/images/index/4.jpg" alt="" />
+                            </div>
+                            <div class="imgs00">
+                                <img src="__PUBLIC__/images/index/4.jpg" alt="" />
+                            </div> 
+                            <div class="imgs00">
+                                <img src="__PUBLIC__/images/index/4.jpg" alt="" />
+                            </div> 
+                            <div class="imgs00">
+                                <img src="__PUBLIC__/images/index/4.jpg" alt="" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <!-- 产品中心 -->
+            <li <if condition="CONTROLLER_NAME eq Product">class="on"</if>>
+                <a href="{:U('Product/index')}?pid={$first1.product_classify_id}"><p class="title">产品中心</p></a>
+                <div class="child big">
+                    <div class="info">
+                        <volist name="arr1" id="v">                      
+                        <dl>
+                            <a href="{:U('Product/index')}?pid={$v.product_classify_id}"><dt>{$v.title}</dt></a>
+                            <volist name="arr1_child" id="vv"> 
+                                <if condition="$v['product_classify_id'] eq $vv[pid]">
+                                    <dd><a href="{:U('Product/index')}?pids={$vv.product_classify_id}">{$vv.title}</a></dd>
+                                </if>
+                            </volist>
+                        </dl>
+                        </volist>
+                    </div>
+                </div>
+            </li>
+            <!-- 解决方案 -->
+            <li <if condition="CONTROLLER_NAME eq Experience">class="on"</if>>
+                <a href="{:U('Experience/index')}"><p class="title">体验与创新</p></a>
+                <div class="child">
+                    <div class="info">
+                        <div class="left">
+                            <div class="h">
+                                <a href="{:U('Experience/index')}">
+                                产品体验
+                                </a>
+                            </div>
+                            <div class="h">
+                                <a href="{:U('Experience/video')}">
+                                技术体验
+                                </a>
+                            </div>
+                        </div>
+                        <div class="right">
+                            <div class="imgs00">
+                                <img src="__PUBLIC__/images/index/5.jpg" alt="" />
+                            </div>
+                            <div class="imgs00">
+                                <img src="__PUBLIC__/images/index/5.jpg" alt="" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li <if condition="CONTROLLER_NAME eq Cases">class="on"</if>>
+                <a href="{:U('Cases/index')}?pid={$first2.project_classify_id}"><p class="title">成功案例</p></a>
+            </li>
+            <!-- 招商加盟 -->
+            <li <if condition="CONTROLLER_NAME eq Join">class="on"</if>>
+                <a href="{:U('Join/index')}"><p class="title">招商加盟</p></a>
+               <!--  <div class="child">
+                    <div class="info">
+                        <div class="left">
+                            <div class="h s">
+                                <a href="">品牌介绍</a>
+                            </div>
+                            <div class="h">
+                                <a href="">
+                                企业文化
+                                </a>
+                            </div>
+                            <div class="h">
+                                <a href="">品牌介绍</a>
+                            </div>
+                            <div class="h">
+                                <a href="">
+                                企业文化
+                                </a>
+                            </div>
+                            <div class="h">
+                                <a href="">品牌介绍</a>
+                            </div>
+                        </div>
+                        <div class="right">
+                            <div class="imgs00">
+                                <img src="__PUBLIC__/images/index/3.jpg" alt="" />
+                            </div>
+                            <div class="imgs00">
+                                <img src="__PUBLIC__/images/index/4.jpg" alt="" />
+                            </div>
+                            <div class="imgs00">
+                                <img src="__PUBLIC__/images/index/2.jpg" alt="" />
+                            </div> 
+                            <div class="imgs00">
+                                <img src="__PUBLIC__/images/index/1.jpg" alt="" />
+                            </div> 
+                            <div class="imgs00">
+                                <img src="__PUBLIC__/images/index/2.jpg" alt="" />
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+            </li>
+            <li class="no" <if condition="CONTROLLER_NAME eq Contact">class="on"</if>>
+                <a href="{:U('Contact/index')}"><p class="title">联系我们</p></a>
+            </li>
+        </ul>
+		<div class="scroll_box" id="cate00">
+			<div class="nav_list">
+				<div class="mobile-nav">
+					<dl>
+					<a href="{:U('Index/index')}"><dt>首页 </dt></a>
+				</dl>            
+				<dl>
+					<dt>关于我们 </dt>
+					<div class="y">
+						<dd><a href="{:U('About/brand')}">品牌介绍</a></dd>
+						<dd><a href="{:U('About/culture')}">企业文化</a></dd>
+						<dd><a href="{:U('About/honor')}">企业荣誉</a></dd>
+						<dd><a href="{:U('About/info')}">光辉历程</a></dd>
+						<dd><a href="{:U('About/video')}">视频中心</a></dd>
+					</div>
+				</dl>            
+				<dl>
+					<dt>新闻中心  </dt>
+					<div class="y">
+						<volist name="arr" id="v"  key="k">
+							<dd><a href="{:U('News/index')}?pid={$v.news_classify_id}">{$v.title}</a></dd>
+						</volist>
+					</div>
+				</dl>            
+				<dl>
+					<dt>产品中心 </dt>
+					<div class="y">
+						<volist name="arr1" id="v"> 
+							<dd class="mm">
+								<a href="{:U('Product/index')}?pid={$v.product_classify_id}" class="m0">{$v.title}</a>
+								<div class="list cate">
+									<div class="list_box">
+										<volist name="arr1_child" id="vv">
+                                            <if condition="$v['product_classify_id'] eq $vv[pid]">
+											     <a href="{:U('Product/index')}?pids={$vv.product_classify_id}" class="list-c">{$vv.title}</a>
+                                            </if>
+										</volist>
+									</div>
+								</div>
+							</dd>
+						</volist>    
+					</div>
+				</dl>
+                <dl>
+                    <dt>体验与创新 </dt>
+                    <div class="y">
+                        <dd><a href="{:U('Experience/index')}">产品体验</a></dd>
+                        <dd><a href="{:U('Experience/video')}">技术体验</a></dd>
+                        
+                    </div>
+                </dl>            
+				<dl>
+					<dt>成功案例</dt>
+					<div class="y">
+						<volist name="arr2" id="v"  key="k">
+							<dd><a href="{:U('Cases/index')}?pid={$v.project_classify_id}">{$v.title}</a></dd>
+						</volist>
+					</div>
+				</dl>            
+				<dl>
+					<a href="{:U('Join/index')}"><dt>招商加盟 </dt></a>
+				</dl>            
+				<dl>
+					<a href="{:U('Contact/index')}"><dt>联系我们 </dt></a>
+				</dl>
+				<div class="customer small">  
+					<div class="child cn">简体中文
+						<div class="show">
+							<p>English</p>
+							<p>Other</p>                    
+							<p>English</p>
+							<p>Other</p>
+						</div>
+					</div>
+					<!-- <div class="shop child">商城</div> -->
+					<a href="{:U('Vip/information')}"><div class="child kehu nor">VIP专区</div></a>
+				</div>
+				</div>
+			</div>
+		</div>
+        <div class="customer">  
+            <div class="child cn">简体中文
+                <div class="show">
+                    <p>English</p>
+                </div>
+            </div>
+            <!-- <div class="shop child">商城</div> -->
+           <a href="{:U('Vip/information')}"><div class="child kehu nor">VIP专区</div></a>
+        </div>
+    </div>
+</div>
+<!-- header over -->

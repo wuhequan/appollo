@@ -1,0 +1,138 @@
+<include file="Public:header" />
+
+<include file="Public:leftNav" />	
+		<!-- BEGIN PAGE -->
+		<div class="page-content">
+			
+			<!-- BEGIN PAGE CONTAINER-->
+			<div class="container-fluid">
+				<!-- BEGIN PAGE HEADER-->
+				<div class="row-fluid">
+					
+						<!-- BEGIN PAGE TITLE & BREADCRUMB-->
+						<h3 class="page-title">
+							{$title} <small>{$base.title}</small>
+						</h3>
+						<!-- END PAGE TITLE & BREADCRUMB-->
+						<!-- BEGIN DASHBOARD STATS -->
+						<div class="row-fluid">
+							
+
+
+
+
+
+							<div class="tab-pane active" >
+									<div class="portlet box blue ">
+										<div class="portlet-title">
+											<div class="caption"><i class="icon-reorder"></i>change password</div>
+											<div class="tools">
+												<a href="javascript:;" class="collapse"></a>
+												
+												<a href="javascript:;" class="reload"></a>
+												<a href="javascript:;" class="remove"></a>
+											</div>
+										</div>
+										<div class="portlet-body form">
+											<!-- BEGIN FORM-->
+											<form action="#" class="form-horizontal form-bordered">
+												<div class="control-group">
+													<label class="control-label">原密码</label>
+													<div class="controls">
+														<input type="password" placeholder="original password" id="oldpw" class="m-wrap span4">
+														<span class="help-inline">登录密码</span>
+													</div>
+												</div>
+												<div class="control-group">
+													<label class="control-label">新密码</label>
+													<div class="controls">
+														<input type="password" placeholder="new password" id="newpw" class="m-wrap span4">
+														<span class="help-inline">新登录密码</span><span class="btn red" id="helpMsg" style="display:none;"></span>
+													</div>
+												</div>
+												<div class="control-group">
+													<label class="control-label">重复</label>
+													<div class="controls">
+														<input type="password" placeholder="again password" id="newpwagain" class="m-wrap span4">
+														<span class="help-inline">在次确认新密码</span>
+													</div>
+												</div>
+
+												
+												<div class="form-actions">
+													<button type="button" class="btn blue" onclick="submitClick()"><i class="icon-ok"></i>保存</button>
+													<button type="button" class="btn" onclick="javascript:window.history.go(-1);">返回</button>
+												</div>
+											</form>
+											<!-- END FORM-->  
+										</div>
+									</div>
+								</div>
+
+
+
+
+
+
+
+
+
+							
+						</div>
+
+
+
+						<!-- END DASHBOARD STATS -->
+				</div>
+				<!-- END PAGE HEADER-->
+			</div>
+			<!-- END PAGE CONTAINER-->    
+		</div>
+		<!-- END PAGE -->
+	</div>
+	<!-- END CONTAINER -->
+<include file="Public:footer" />
+	<!-- BEGIN PAGE LEVEL SCRIPTS -->
+	<script src="__PUBLIC__/metronic/js/app.js"></script>
+	<script>
+		jQuery(document).ready(function() {    
+		   App.init(); // initlayout and core plugins
+		});
+	</script>
+	<!-- END JAVASCRIPTS -->
+	<script>
+		function submitClick(){
+			if($("#newpw").val()!=$("#newpwagain").val()){
+				$("#helpMsg").html("两次密码不一致").show();
+				return;
+			}else if(!$("#newpw").val()||!$("#oldpw").val()||!$("#newpwagain").val()){
+				$("#helpMsg").html("请填写完整").show();
+				return;
+			}else{
+				$.post(
+					"{:U('Admin/Admin/changePass_Submit')}",
+					{
+						'oldpw':$("#oldpw").val(),
+						'newpw':$("#newpw").val(),
+						'newpwagain':$("#newpwagain").val()
+					},
+					function(data){
+						if(data==1){
+			                success();
+						}else{
+
+							error();
+			                
+						}
+					}
+					
+				);
+			}
+		    
+		}
+	</script>
+	
+	
+</body>
+<!-- END BODY -->
+</html>

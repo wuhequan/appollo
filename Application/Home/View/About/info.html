@@ -1,0 +1,123 @@
+<include file="Public:header" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/about_us.css" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/swiper.min.css" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/nav.css" />
+
+s="stance"></div><!-- stance -->
+<!-- banner  -->
+<div class="banner" style="background-image:url({$banner['imageUrl']})">
+    <div class="container">
+        <h6>{$banner.title}</h6>
+        <p>{$banner.content|html_entity_decode}</p>
+    </div>
+</div>
+<!-- banner over -->
+<!-- nav -->
+<div class="nav-box">
+    <div class="two-nav">
+        <div class="mobile-nav00">
+            <div class="mobile-navChil">
+                <div class="swiper-container">
+                <div class="swiper-wrapper">     
+                    <div class="swiper-slide">
+                        <a href="{:U('About/brand')}">企业简介</a>
+                    </div>
+                    <div class="swiper-slide">
+                        <a href="{:U('About/culture')}">企业文化</a>
+                    </div>
+                    <div class="swiper-slide">
+                        <a href="{:U('About/honor')}">企业荣誉</a>
+                    </div>
+                    <div class="swiper-slide kuai">
+                        <a href="{:U('About/info')}">光辉历程</a>
+                    </div>
+                </div>
+
+                <!-- Add Pagination -->
+                <div class="swiper-pagination"></div>
+                <!-- Add Arrows -->
+                <a href="" class="nexts">
+                    <div class="swiper-button-next">
+                        <img src="__PUBLIC__/images/new/right.png" alt="" />
+                    </div>
+                </a>
+                <a href="" class="prevs">
+                    <div class="swiper-button-prev">
+                        <img src="__PUBLIC__/images/new/left.png" alt="" />
+                    </div>
+                </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- nav over -->
+<!-- main -->
+<div class="main">
+    <div class="history"></div>
+    <ul class="history_list">
+
+        <volist name="info" id="v"  key="k"> 
+            <li>
+                <span></span>
+                <div class="history_list_box">
+                    <div class="info">
+                        
+                        <h4>{$v.title}</h4>
+                        {$v.content|html_entity_decode}
+                    </div>
+                </div>
+            </li>
+        </volist>
+
+    </ul>
+
+    <div class="img_more"></div>
+</div>
+<!-- mian over -->
+<!--brand -->
+<div class="brand">
+    <div class="container">
+            <h4><span>20</span>年深厚的品牌积淀</h4>
+            <ul>
+                <volist name="other.info" id="v"  key="k"> 
+                    <li <if condition="$k%6 eq 0">class="nor"</if>><p>{$v|mb_substr=0,3,'utf8'}<br />{$v|mb_substr=3,10,'utf8'}</p></li>
+                </volist>
+            </ul>
+    </div>    
+</div>
+<!--brand over -->
+<include file="Public:footer" />
+
+<script src="__PUBLIC__/js/nav01.js"></script>
+
+<script type="text/javascript">
+$(function(){
+    $('.main ul li:odd ').addClass('current');
+})
+</script>
+<script type="text/javascript" src="__PUBLIC__/js/swiper.min.js"></script>
+<script type="text/javascript">
+
+function ligouzi(i){
+    var mySwiper = new Swiper('.swiper-container',{
+        pagination: '.swiper-pagination',
+        // nextButton: '.swiper-button-next',
+        // prevButton: '.swiper-button-prev',
+        slidesPerView: 3,
+        initialSlide :i,
+        loop:true,
+        centeredSlides : true,
+        onlyExternal : true
+    })
+}
+$(".swiper-slide").each(function(i,n){
+    if($(this).hasClass("kuai")){
+        new ligouzi(i);
+    }
+});
+    var nexts=$('.kuai').next('.swiper-slide').find('a').attr('href');
+    $('.nexts').attr('href',nexts);
+    var prevs=$('.kuai').prev('.swiper-slide').find('a').attr('href');
+    $('.prevs').attr('href',prevs);
+</script>

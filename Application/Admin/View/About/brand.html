@@ -1,0 +1,239 @@
+<include file="Public:header" />
+
+<include file="Public:leftNav" />	
+		<!-- BEGIN PAGE -->
+		<div class="page-content">
+			
+			<!-- BEGIN PAGE CONTAINER-->
+			<div class="container-fluid">
+				<!-- BEGIN PAGE HEADER-->
+				<div class="row-fluid">
+					
+						<!-- BEGIN PAGE TITLE & BREADCRUMB-->
+						<h3 class="page-title">
+							{$title} <small>{$base.title}</small>
+						</h3>
+						<!-- END PAGE TITLE & BREADCRUMB-->
+						<!-- BEGIN DASHBOARD STATS -->
+						
+						<div class="row-fluid">
+
+
+
+							<div class="tab-pane active" >
+								<div class="portlet box blue ">
+									<div class="portlet-title">
+										<div class="caption"><i class="icon-reorder"></i>品牌介绍<input type="hidden" id="dataid" value="{$data.brand_id}" /></div>
+										<div class="tools">
+											<a href="javascript:;" class="collapse"></a>
+											<a href="javascript:;" class="reload"></a>
+											<a href="javascript:;" class="remove"></a>
+										</div>
+									</div>
+									
+								</div>
+							</div>
+											<form action="#" class="form-horizontal form-bordered">
+											<h3 class="form-section">CONTENT</h3>
+
+											
+
+											<div class="control-group">
+												<label class="control-label">简介</label>
+												<div class="controls">
+													<textarea cols="80" name="content" rows="10">{$data.content}</textarea>
+												</div>
+											</div>
+
+											<!-- <div class="control-group">
+												<label class="control-label">标题</label>
+												<div class="controls">
+													<input type="text" placeholder="Title" name="title" id="title" class="m-wrap large" value="{$data.title}">
+													<span class="help-inline"></span>
+												</div>
+											</div>
+
+											<div class="control-group">
+												<label class="control-label">英文标题</label>
+												<div class="controls">
+													<input type="text" placeholder="英文标题" name="etitle" id="etitle" class="m-wrap large" value="{$data.etitle}">
+													<span class="help-inline"></span>
+												</div>
+											</div>
+ -->
+											<div class="control-group">
+												<label class="control-label">图一</label>
+												<div class="controls">
+													
+													<img id="imageShow2" src="{$data.imageUrl2}" />
+													<input type="hidden" id="imageUrl2" value="{$data.imageUrl2}" />
+													
+														<div id="queue"></div>
+														<input id="file_upload2" name="file_upload2" type="file" multiple="true">
+													<span class="help-inline">图片比例 （1200*500）</span>
+												</div>
+											</div>
+
+											<div class="control-group">
+												<label class="control-label">图二</label>
+												<div class="controls">
+													
+													<img id="imageShow" src="{$data.imageUrl}" />
+													<input type="hidden" id="imageUrl" value="{$data.imageUrl}" />
+													
+														<div id="queue"></div>
+														<input id="file_upload" name="file_upload" type="file" multiple="true">
+													<span class="help-inline">图片比例 （600*420）</span>
+												</div>
+											</div>
+
+											<div class="control-group">
+												<label class="control-label">企业理念</label>
+												<div class="controls">
+													<input type="text" placeholder="企业理念" name="idea" id="idea" class="m-wrap large" value="{$data.idea}">
+													<span class="help-inline"></span>
+												</div>
+											</div>
+
+											<div class="control-group">
+												<label class="control-label">企业使命</label>
+												<div class="controls">
+													<input type="text" placeholder="企业使命" name="mission" id="mission" class="m-wrap large" value="{$data.mission}">
+													<span class="help-inline"></span>
+												</div>
+											</div>
+
+											<div class="control-group">
+												<label class="control-label">经营方针</label>
+												<div class="controls">
+													<input type="text" placeholder="经营方针" name="policy" id="policy" class="m-wrap large" value="{$data.policy}">
+													<span class="help-inline"></span>
+												</div>
+											</div>
+
+											<div class="control-group">
+												<label class="control-label">公司愿景</label>
+												<div class="controls">
+													<input type="text" placeholder="公司愿景" name="vision" id="vision" class="m-wrap large" value="{$data.vision}">
+													<span class="help-inline"></span>
+												</div>
+											</div>
+
+											<div class="control-group">
+												<label class="control-label">企业核心竞争力</label>
+												<div class="controls">
+													<input type="text" placeholder="企业核心竞争力" name="power" id="power" class="m-wrap large" value="{$data.power}">
+													<span class="help-inline"></span>
+												</div>
+											</div>
+
+											<div class="control-group">
+												<label class="control-label">底部内容(可加可不加)</label>
+												<div class="controls">
+													<textarea cols="80" name="content1" rows="10">{$data.content1}</textarea>
+												</div>
+											</div>
+
+											
+
+											
+
+											<div class="form-actions">
+												<button type="button" onclick="submitClick()" class="btn blue"><i class="icon-ok"></i>保存</button>
+												<button type="button" class="btn" onclick="javascript:window.history.go(-1);">返回</button>
+											</div>
+										</form>
+
+							
+						</div>
+						<!-- END DASHBOARD STATS -->
+				</div>
+				<!-- END PAGE HEADER-->
+			</div>
+			<!-- END PAGE CONTAINER-->    
+		</div>
+		<!-- END PAGE -->
+	</div>
+	<!-- END CONTAINER -->
+<include file="Public:footer" />
+	
+	<!-- BEGIN PAGE LEVEL SCRIPTS -->
+	<script src="__PUBLIC__/metronic/js/app.js"></script>
+
+	<script>
+		jQuery(document).ready(function() {    
+		   App.init(); // initlayout and core plugins
+		});
+	</script>
+	<!-- END JAVASCRIPTS -->
+	
+<script type="text/javascript">
+
+		$(function(){
+
+
+		
+
+			var showEle="imageShow";
+			var saveEle="imageUrl";
+			var ele="file_upload";
+
+			var imageObj=new images(timestamp,token,swf,uploader,showEle,saveEle,ele,"src");
+			setTimeout(imageObj.upload(),10);
+
+		  	var showEle1="imageShow1";
+			var saveEle1="imageUrl1";
+			var ele1="file_upload1";
+
+			var imageObj1=new images(timestamp,token,swf,uploader,showEle1,saveEle1,ele1,"src");
+			setTimeout(imageObj1.upload(),10);
+
+			showEle="maxShow";
+		    ele="max_upload";
+		    var imageObja=new imagesMore(timestamp,token,swf,uploader,showEle,ele,"maxUrls");
+		    setTimeout(imageObja.upload(),10);
+
+			var showEle2="imageShow2";
+			var saveEle2="imageUrl2";
+			var ele2="file_upload2";
+
+			var imageObj2=new images(timestamp,token,swf,uploader,showEle2,saveEle2,ele2,"src");
+			setTimeout(imageObj2.upload(),10);
+
+		    
+		});
+var editorObj=new editor("__PUBLIC__","content");
+var editorObj1=new editor("__PUBLIC__","content1");
+		function submitClick(){
+			var content=editorObj.editor.getData();
+			var content1=editorObj1.editor.getData();
+			$.post(
+				"{:U('Admin/About/brand_Submit')}",
+				{
+
+					'imageUrl1':$("#imageUrl1").val(),
+					'imageUrl2':$("#imageUrl2").val(),
+					'imageUrl':$("#imageUrl").val(),
+					'title':$("#title").val(),
+					'etitle':$("#etitle").val(),
+					'idea':$("#idea").val(),
+					'mission':$("#mission").val(),
+					'vision':$("#vision").val(),
+					'policy':$("#policy").val(),
+					'power':$("#power").val(),
+					'content':content,
+					'content1':content1,
+
+
+				},
+				function(data){
+					if(data==1){
+		                success("{:U('Admin/About/brand')}");
+					}else{
+						errorNo();
+					}
+				}
+				
+			);
+		}
+	</script>

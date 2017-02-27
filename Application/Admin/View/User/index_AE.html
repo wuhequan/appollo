@@ -1,0 +1,220 @@
+<include file="Public:header" />
+
+<include file="Public:leftNav" />	
+		<!-- BEGIN PAGE -->
+		<div class="page-content">
+			
+			<!-- BEGIN PAGE CONTAINER-->
+			<div class="container-fluid">
+				<!-- BEGIN PAGE HEADER-->
+				<div class="row-fluid">
+					
+						<!-- BEGIN PAGE TITLE & BREADCRUMB-->
+						<h3 class="page-title">
+							{$title} <small>{$base.title}</small>
+						</h3>
+						<!-- END PAGE TITLE & BREADCRUMB-->
+						<!-- BEGIN DASHBOARD STATS -->
+						
+						<div class="row-fluid">
+
+
+
+							<div class="tab-pane active" >
+								<div class="portlet box blue ">
+									<div class="portlet-title">
+										<div class="caption"><i class="icon-reorder"></i>用户列表
+											<input type="hidden" id="dataid" value="{$data.user_id}" />
+											<input type="hidden" id="createtime" value="{$data.createtime}" />
+										</div>
+										<div class="tools">
+											<a href="javascript:;" class="collapse"></a>
+											
+											<a href="javascript:;" class="reload"></a>
+											<a href="javascript:;" class="remove"></a>
+										</div>
+									</div>
+									<div class="portlet-body form">
+										
+										<!-- BEGIN FORM-->
+										
+										
+										<form action="#" class="form-horizontal form-bordered">
+											
+											
+											<!-- <h3 class="form-section">SITE META</h3>
+											<div class="control-group">
+												<label class="control-label">网站标题：</label>
+												<div class="controls">
+													<input type="text" placeholder="Title" name="headtitle" id="headtitle" class="m-wrap large" value="{$data.headtitle}">
+													<span class="help-inline">针对搜索引擎设置的 网页标题(Title)</span>
+												</div>
+											</div>
+											<div class="control-group">
+												<label class="control-label">搜索标题：</label>
+												<div class="controls">
+													<input type="text" placeholder="Meta Search Title" name="searchtitle" id="searchtitle" class="m-wrap large" value="{$data.searchtitle}">
+													<span class="help-inline">针对搜索引擎设置的 搜索标题(Search Title)</span>
+												</div>
+											</div>
+											<div class="control-group">
+												<label class="control-label">网页关键词：</label>
+												<div class="controls">
+													<input type="text" placeholder="Meta Keywords" name="keywords" id="keywords" class="m-wrap large" value="{$data.keywords}">
+													<span class="help-inline">针对搜索引擎设置的 关键词 (keywords)</span>
+												</div>
+											</div>
+											
+											<div class="control-group">
+												<label class="control-label">网页声明：</label>
+												<div class="controls">
+													<input type="text" placeholder="Meta Copyright" name="copyright" id="copyright" class="m-wrap large" value="{$data.copyright}">
+													<span class="help-inline">针对搜索引擎设置的 网页声明(copyright)</span>
+												</div>
+											</div>
+											<div class="control-group">
+												<label class="control-label">网页描述：</label>
+												<div class="controls">
+													<input type="text" placeholder="Meta Description" name="description" id="description" class="m-wrap large" value="{$data.description}">
+													<span class="help-inline">针对搜索引擎设置的 网页描述(description)</span>
+												</div>
+											</div> -->
+
+											<h3 class="form-section">CONTENT</h3>
+
+
+											<div class="control-group">
+												<label class="control-label">图片</label>
+												<div class="controls">
+													
+													<img id="imageShow" src="{$data.imageUrl}" />
+													<input type="hidden" id="imageUrl" value="{$data.imageUrl}" />
+													
+														<div id="queue"></div>
+														<input id="file_upload" name="file_upload" type="file" multiple="true">
+													<span class="help-inline">图片比例 （*）</span>
+												</div>
+											</div>
+
+											<div class="control-group">
+												<label class="control-label">分类</label>
+												<div class="controls">
+												{$dataclassify}
+												</div>
+											</div>
+											
+											<div class="control-group">
+												<label class="control-label">姓名</label>
+												<div class="controls">
+													<input type="text" placeholder="Title" name="name" id="name" class="m-wrap large" value="{$data.name}">
+													<span class="help-inline"></span>
+												</div>
+											</div>
+											<div class="control-group">
+												<label class="control-label">简介</label>
+												<div class="controls">
+													<textarea id="info" class="m-wrap span6" rows="6" >{$data.info}</textarea>
+													<span class="help-inline"></span>
+												</div>
+											</div>
+											<div class="control-group">
+												<label class="control-label">创建时间</label>
+												<div class="controls">
+													<input type="date" placeholder="Show time" name="" id="" class="m-wrap large" value="{$data.createtimeshow}">
+													<span class="help-inline">观看性，无法改变</span>
+												</div>
+											</div>
+											<div class="control-group">
+												<label class="control-label">优先级</label>
+												<div class="controls">
+													<input type="text" placeholder="Sort" name="sort" id="sort" class="m-wrap large" value="{$data.sort}">
+													<span class="help-inline">默认为0</span>
+												</div>
+											</div>
+											
+											
+											
+						
+											<div class="form-actions">
+												<button type="button" onclick="submitClick()" class="btn blue"><i class="icon-ok"></i>保存</button>
+												<button type="button" class="btn" onclick="javascript:window.history.go(-1);">返回</button>
+											</div>
+										</form>
+										<!-- END FORM-->  
+									</div>
+								</div>
+							</div>
+
+
+
+
+
+							
+						</div>
+						<!-- END DASHBOARD STATS -->
+				</div>
+				<!-- END PAGE HEADER-->
+			</div>
+			<!-- END PAGE CONTAINER-->    
+		</div>
+		<!-- END PAGE -->
+	</div>
+	<!-- END CONTAINER -->
+<include file="Public:footer" />
+	
+	<!-- BEGIN PAGE LEVEL SCRIPTS -->
+	<script src="__PUBLIC__/metronic/js/app.js"></script>
+
+	<script>
+		jQuery(document).ready(function() {    
+		   App.init(); // initlayout and core plugins
+		});
+	</script>
+	<!-- END JAVASCRIPTS -->
+	<script type="text/javascript">
+		$(function(){
+			var showEle="imageShow";
+			var saveEle="imageUrl";
+			var ele="file_upload";
+
+			var imageObj=new images(timestamp,token,swf,uploader,showEle,saveEle,ele,"src");
+			setTimeout(imageObj.upload(),10);
+		});
+		
+		function submitClick(){
+			$.post(
+				"{:U('Admin/User/index_Submit')}",
+				{
+					'dataid':$("#dataid").val(),
+					'user_classify_id':$('#classify option:selected') .val(),
+					'name':$("#name").val(),
+					'sort':$("#sort").val(),
+					'info':$("#info").val(),
+					'access':$("#access").val(),
+					'createtime':$("#createtime").val(),
+					'imageUrl':$("#imageUrl").val(),
+
+
+
+					'headtitle':$("#headtitle").val(),
+					'keywords':$("#keywords").val(),
+					'description':$("#description").val(),
+					'searchtitle':$("#searchtitle").val(),
+					'copyright':$("#copyright").val()
+
+				},
+				function(data){
+					if(data==1){
+		                success("{:U('Admin/User/index')}");
+					}else{
+						errorNo();
+					}
+				}
+				
+			);
+		}
+	</script>
+</body>
+<!-- END BODY -->
+
+</html>

@@ -1,0 +1,156 @@
+<include file="Public:header" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/metronic/css/jquery.nestable.css" />
+
+<!-- END PAGE LEVEL STYLES -->
+<include file="Public:leftNav" />	
+		<!-- BEGIN PAGE -->
+		<div class="page-content">
+			
+			<!-- BEGIN PAGE CONTAINER-->
+			<div class="container-fluid">
+				<!-- BEGIN PAGE HEADER-->
+				<div class="row-fluid">
+					
+						<!-- BEGIN PAGE TITLE & BREADCRUMB-->
+						<h3 class="page-title">
+							{$title} <small>{$base.title}</small>
+						</h3>
+						<!-- END PAGE TITLE & BREADCRUMB-->
+						<!-- BEGIN DASHBOARD STATS -->
+				
+
+						<div class="row-fluid">
+							
+								<div class="portlet box blue">
+									<div class="portlet-title">
+										<div class="caption"><i class="icon-comments"></i>权限分配<input type="hidden" id="dataid" value="{$admin.admin_id}" /></div>
+										<div class="tools">
+											<a href="javascript:;" class="collapse"></a>
+											<a href="#portlet-config" data-toggle="modal" class="config"></a>
+											<a href="javascript:;" class="reload"></a>
+											<a href="javascript:;" class="remove"></a>
+										</div>
+									</div>
+									<div class="portlet-body">
+										
+											<button type="button" onclick="submitClick()" class="btn blue"><i class="icon-ok"></i>保存</button>
+											<button type="button" class="btn" onclick="javascript:window.history.go(-1);">返回</button>
+										
+
+										<div class="dd" id="nestable_list_3">
+											<ol class="dd-list">
+												<volist name="data" id="vo">
+													<li class="dd-item dd3-item" data-id="{$vo.nav_left_id}">
+														<div class="dd-handle dd3-handle"></div>
+														<div class="dd3-content">
+															<span>{$vo.title}</span>
+															<span class=""><input type="checkbox" class="inputCheckbox inputCheckbox{$vo.nav_left_id}F inputCheckboxF" <if condition="$vo['checkbox'] eq 1">checked</if> value="{$vo.nav_left_id}"></span>
+														</div>
+														<ol class="dd-list">
+															<volist name="vo['child']" id="vo1" key="j">
+																<li class="dd-item dd3-item" data-id="17">
+																	<div class="dd-handle dd3-handle"></div>
+																	<div class="dd3-content">
+																		<span>{$vo1.title}</span>
+																		<span class=""><input type="checkbox" class="inputCheckbox inputCheckbox{$vo1.nav_left_id}" value="{$vo1.nav_left_id}" <if condition="$vo1['checkbox'] eq 1">checked</if>></span>
+																	</div>
+																	<ol class="dd-list">
+																		<volist name="vo1['child']" id="vo2" key="k">
+																			<li class="dd-item dd3-item" data-id="17">
+																				<div class="dd-handle dd3-handle"></div>
+																				<div class="dd3-content">
+																					<span>{$vo2.title}</span>
+																					<span class=""><input type="checkbox" class="inputCheckbox inputCheckbox{$vo2.nav_left_id}" value="{$vo2.nav_left_id}" <if condition="$vo2['checkbox'] eq 1">checked</if>></span>
+																				</div>
+																				<ol class="dd-list">
+																				</ol>
+																			</li>
+																		</volist>
+																	</ol>
+																</li>
+															</volist>
+														</ol>
+													</li>
+												</volist>
+												
+											</ol>
+										</div>
+										<button type="button" onclick="submitClick()" class="btn blue"><i class="icon-ok"></i>保存</button>
+										<button type="button" class="btn" onclick="javascript:window.history.go(-1);">返回</button>
+									</div>
+								</div>
+
+
+							
+						</div>
+
+						
+						<!-- END DASHBOARD STATS -->
+				</div>
+				<!-- END PAGE HEADER-->
+			</div>
+			<!-- END PAGE CONTAINER-->    
+		</div>
+		<!-- END PAGE -->
+	</div>
+	<!-- END CONTAINER -->
+<include file="Public:footer" />
+	<!-- BEGIN PAGE LEVEL SCRIPTS -->
+  
+	<script src="__PUBLIC__/metronic/js/app.js"></script>
+
+	<script>
+		jQuery(document).ready(function() {    
+		   App.init(); 
+
+		});
+
+		$(function(){
+			$(".inputCheckbox").click(function(){
+				var CheckboxClass=$(this).attr("class");
+				CheckboxClass=CheckboxClass.replace("inputCheckbox ","");
+				
+				$("."+CheckboxClass+"F").parent().attr("class","checked");
+			});
+
+			$(".inputCheckboxF").click(function(){
+				if($(this).parent().hasClass("checked")){
+					$(this).parents(".dd-item").find(".dd-list .checker span").addClass("checked");
+				}else{
+					$(this).parents(".dd-item").find(".dd-list .checker span").removeClass("checked");
+				}
+
+			});
+
+		});
+
+		function submitClick(){
+			var role=",";
+			$.each($(".checker .checked .inputCheckbox"),function(i,n){
+				role+=$(n).val()+",";
+			});
+			
+			
+			$.post(
+				"{:U('Admin/Admin/role_Submit')}",
+				{
+					'dataid':$("#dataid").val(),
+					'role':role
+				},
+				function(data){
+					if(data==1){
+		                success("{:U('Admin/Admin/admin')}");
+					}else{
+						errorNo();
+					}
+				}
+				
+			);
+		}
+		
+	</script>
+	<!-- END JAVASCRIPTS -->
+
+</body>
+<!-- END BODY -->
+</html>

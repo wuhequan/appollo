@@ -1,0 +1,9 @@
+.mainBtn{padding:0px 0 40px 0;text-align:center;}
+.mainBtn .child{display:inline-block;*display:inline;*zoom:1;margin:2px 6px;width:36px;height:36px;text-align:center;line-height:36px;border:1px solid #cbcbcb;color:#A1A1A1;font-size:12px;}
+.mainBtn .child.long{width:60px;}
+.mainBtn .on{ background:#F5F5F5;}
+.mainBtn .on p{color:#999;}
+.mainBtn .child{transition-duration: .5s;-ms-transition-duration: .5s;-moz-transition-duration: .5s; -webkit-transition-duration: .5s;}
+.mainBtn .child p{transition-duration: .5s;-ms-transition-duration: .5s;-moz-transition-duration: .5s; -webkit-transition-duration: .5s;}
+.mainBtn .child:hover{background:#F5F5F5;}
+.mainBtn .child:hover p{color:#999;}

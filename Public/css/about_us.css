@@ -1,0 +1,329 @@
+.banner {
+  width: 100%;
+  height: 550px;
+  background: no-repeat center center;
+  background-size: cover;
+  -webkit-background-size: cover;
+}
+.banner h6 {
+  font-size: 52px;
+  color: #eb6100;
+  padding-top: 180px;
+  padding-bottom: 30px;
+}
+.banner p {
+  font-size: 28px;
+  color: #727171;
+  line-height: 44px;
+}
+.nav-box {
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+  background: #e5e5e5;
+}
+.two-nav {
+  width: 82%;
+  height: 80px;
+  line-height: 80px;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+}
+.two-nav .content {
+  width: 100%;
+  height: 100%;
+  background: #e5e5e5;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.two-nav .content .container {
+  width: 90%;
+  max-width: 1100px;
+  margin: 0 auto;
+  font-size: 0;
+  text-align: center;
+}
+.two-nav .content .container .child {
+  width: 33%;
+  height: 100%;
+  font-size: 22px;
+  color: #444;
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+  vertical-align: middle;
+  overflow: hidden;
+  text-align: center;
+  white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.two-nav .content .container .child:hover,
+.two-nav .content .container .in {
+  background: #eb6100;
+  color: #fff;
+  font-size: 26px;
+}
+.two-nav .btn {
+  width: 42px;
+  height: 42px;
+  background: #bcbcbc;
+  line-height: 42px;
+  text-align: center;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto 0;
+  cursor: pointer;
+}
+.two-nav .btn:hover {
+  background: #eb6100;
+}
+.two-nav .left-btn {
+  left: 0;
+}
+.two-nav .right-btn {
+  right: 0;
+}
+.main .history_list .history_list_box .info img{
+  width:100%!important;
+  height:auto!important;
+}
+.main {
+  width: 93.75%;
+  max-width: 1100px;
+  height: auto;
+  padding: 80px 0 100px;
+  overflow: hidden;
+  margin: 0 auto 100px;
+  position: relative;
+}
+.main .img_more {
+  width: 50px;
+  height: 50px;
+  background: url(../images/about/about_us_icon_more.png);
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  bottom: 0;
+  z-index: 5;
+  cursor: pointer;
+}
+.main .history {
+  width: 50%;
+  height: 100%;
+  border-right: 1px dashed #b3b3b3;
+  position: absolute;
+  left: -1px;
+  top: 0;
+}
+.main .history_list {
+  width: 100%;
+}
+.main .history_list li {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+.main .history_list li span {
+  width: 25px;
+  height: 25px;
+  background: url(../images/about/about_us_icon.png) no-repeat left bottom;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 30px;
+  margin: 0 auto;
+  z-index: 33;
+}
+.main .history_list .history_list_box {
+  width: 50%;
+  max-width: 418px;
+  height: auto;
+  background: #f1f1f1;
+  float: left;
+  border-radius: 6px;
+  -webkit-border-radius: 6px;
+  position: relative;
+  font-size: 14px;
+  line-height: 22px;
+  color: #666;
+}
+.main .history_list .history_list_box .info {
+  width: 80%;
+  margin: 0 auto;
+  padding: 40px 0;
+}
+.main .history_list .history_list_box h4 {
+  font-weight: bold;
+  font-size: 32px;
+  padding-bottom: 16px;
+}
+.main .history_list li.current .history_list_box {
+  float: right;
+}
+.main .history_list li:hover .history_list_box {
+  background: #eb6100;
+  color: #fff;
+}
+.main .history_list li:hover span {
+  background-position: 0 0;
+}
+.brand {
+  padding: 52px 0;
+  background: #f5f5f5;
+}
+.brand h4 {
+  height: 48px;
+  text-align: center;
+  font-size: 34px;
+  color: #333;
+  line-height: 48px;
+  overflow: hidden;
+}
+.brand h4 span {
+  height: 48px;
+  padding-right: 3px;
+  color: #eb6100;
+  font-size: 48px;
+  font-weight: bold;
+  position: relative;
+  top: 5px;
+}
+.brand ul {
+  padding-top: 50px;
+  text-align: center;
+  font-size: 0;
+}
+.brand ul li {
+  width: 148px;
+  height: 166px;
+  background: url(../images/about/about_us_brandbg.png) no-repeat;
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+  vertical-align: middle;
+  overflow: hidden;
+  margin-right: 60px;
+}
+.brand ul li p {
+  font-size: 18px;
+  width: 88%;
+  padding-top: 48px;
+  margin: 0 auto;
+  line-height: 32px;
+  text-align: center;
+  color: #444444;
+}
+.brand ul li:hover p {
+  color: #eb6100;
+}
+.brand ul .nor {
+  margin-right: 0;
+}
+@media (max-width: 639px) {
+    .banner {
+    height: 200px;
+  }
+  .banner h6 {
+    padding-top: 50px;
+    padding-bottom: 6px;
+    font-size: 22px;
+  }
+  .banner p {
+    font-size: 14px;
+    line-height: 22px;
+  }
+  .main .history_list .history_list_box {
+    width: 100%;
+    margin-bottom:4px;
+    font-size: 12px;
+    max-width: 100%;
+  }
+  .main .history_list .history_list_box h4{font-size: 24px;padding-bottom: 8px;}
+  .main .history_list .history_list_box span {
+    display: none;
+  }
+  .brand ul li {
+    margin-right: 10px;
+    margin-bottom: 10px;
+  }
+  .brand ul .nor {
+    margin-right: 10px;
+  }
+  .main .history {
+    display: none;
+  }
+  .brand h4 {
+    font-size: 20px;
+  }
+  .brand h4 span{font-size: 36px;}
+  .main .history_list li span {
+    display: none;
+  }
+  .brand ul{padding-top: 20px;}
+  .brand ul li{width: 80px;height: 100px;-webkit-background-size: 100% auto;
+  background-size: 100% auto;}
+  .brand ul li p{font-size: 12px;line-height: 20px;padding-top: 20px;}
+  .two-nav .content .container .child {
+    font-size: 14px;
+  }
+  .two-nav .content .container .child:hover,
+  .two-nav .content .container .in {
+    font-size: 12px;
+  }
+  .two-nav {
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+  }
+  .two-nav .content .container {
+    width: 86%;
+  }
+  .two-nav .btn {
+    width: 26px;
+    height: 26px;
+    line-height: 26px;
+  }
+  .main{padding-top: 40px;padding-bottom: 40px;margin:0 auto  20px;}
+  .main .history_list .history_list_box .info{width: 90%;padding:12px 0;}
+  .brand{padding:24px 0;}
+  .main .img_more{width:30px;height:30px;line-height:30px;background-size:100% auto;-webkit-background-size:100% auto;}
+}
+@media (min-width: 640px) and (max-width: 1023px) {
+  .brand ul li {
+    margin-right: 10px;
+    margin-bottom: 10px;
+  }
+  .brand ul .nor {
+    margin-right: 10px;
+  }
+  .main .history_list .history_list_box {
+    width: 46%;
+  }
+  .two-nav .content .container .child {
+    font-size: 18px;
+  }
+  .two-nav .content .container .child:hover,
+  .two-nav .content .container .in {
+    font-size: 20px;
+  }
+  .two-nav {
+    width: 93.75%;
+    height: 70px;
+    line-height: 70px;
+  }
+  .two-nav .content .container {
+    width: 86%;
+  }
+}
+@media (min-width: 1024px) and (max-width: 1335px) {
+  .brand ul li {
+    margin-right: 10px;
+  }
+}

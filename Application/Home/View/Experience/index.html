@@ -1,0 +1,161 @@
+<include file="Public:header" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/new1.css" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/swiper.min.css" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/nav.css" />
+<!-- stance --><div class="stance"></div><!-- stance -->
+<!-- banner  -->
+<div class="banner" style="background-image:url({$banner['imageUrl']})">
+    <div class="container">
+        <h6>{$banner.title}</h6>
+        <p>{$banner.content|html_entity_decode}</p>
+    </div>
+</div>
+<!-- banner over -->
+<!-- nav -->
+<div class="nav-box">
+    <div class="two-nav">
+        <div class="mobile-nav00">
+            <div class="mobile-navChil">
+                <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide kuai">
+                        <!-- <span onclick="javascript:window.location.href='{:U('Experience/index')}'">产品体验</span> -->
+                        <a href="{:U('Experience/index')}">产品体验</a>
+                    </div>
+                    <div class="swiper-slide">
+                        <!-- <span onclick="javascript:window.location.href='{:U('Experience/video')}'">技术体验</span> -->
+                        <a href="{:U('Experience/video')}">技术体验</a>
+                    </div>
+                </div>
+
+            
+                <div class="swiper-pagination"></div>
+        
+                <a href="" class="nexts">
+                    <div class="swiper-button-next">
+                        <img src="__PUBLIC__/images/new/right.png" alt="" />
+                    </div>
+                </a>
+                <a href="" class="prevs">
+                    <div class="swiper-button-prev">
+                        <img src="__PUBLIC__/images/new/left.png" alt="" />
+                    </div>
+                </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- nav over -->
+<!-- main -->
+<div class="main">
+    <ul>
+        <div id="list">    
+            <volist name="data" id="v"  key="k">
+                <volist name="v" id="vv" >  
+                    <li <if condition="$vv['sk']%3 eq 0"> class="nor"</if>>
+                        <div <if condition="$k%2 eq 0"> class="two"</if>>
+                            <div class="imgs">
+                                <a href="{:U('Experience/detail')}?pid={$vv.experience_id}"><img src="{$vv.imageUrl}" alt="" /></a>
+                            </div>
+                            <div class="info">
+                                <div class="info-bd">
+                                  <a href="{:U('Experience/detail')}?pid={$vv.experience_id}"><h5>{$vv.title}</h5></a>
+                                   <!--  <span>
+                                        {:date('Y-m-d',$vv['showtime'])}
+                                    </span>
+                                    <p>{$vv.info}</p> -->
+                                    <a href="{:U('Experience/detail')}?pid={$vv.experience_id}" class="more" pid={$vv.experience_id}>READ MORE&gt;</a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </volist>
+            </volist>
+        </div>
+    </ul>
+    <div class="lookMore">查看更多</div>
+</div>
+<!-- mian over -->
+<include file="Public:footer" />
+<script src="__PUBLIC__/js/nav01.js"></script>
+<script src="__PUBLIC__/js/news.js"></script>
+<script src="__PUBLIC__/js/toggleClass.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/swiper.min.js"></script>
+<script type="text/javascript">
+function ligouzi(i){
+    var mySwiper = new Swiper('.swiper-container',{
+        pagination: '.swiper-pagination',
+        // nextButton: '.swiper-button-next',
+        slidesPerView:2,
+        initialSlide :i,
+        // centeredSlides: true,
+        onlyExternal : true
+        // loop:true,
+        // onSlideNextEnd: function(swiper,i){
+        //   var pid= $(i).attr('pid'); 
+
+        //  alert(pid);
+        // }
+        
+    })
+}
+$(".swiper-slide").each(function(i,n){
+    if($(this).hasClass("kuai")){
+        new ligouzi(i);
+    }
+});
+
+</script>
+<script type="text/javascript">
+$(function(){
+    $('.main ul li:odd ').addClass('current');
+})
+</script>
+<script type="text/javascript">
+var su = 0;
+    $('.lookMore').click(function(){
+         $.get("{:U('Experience/news_sub')}",{su:su},function(data){
+
+
+                    var html="";
+                    if(data==1)
+                    {
+                        $('.lookMore').html('无更多资料'); 
+                        return;
+                    }
+                    for(var j in data) 
+                    {
+                        for (var i in data[j]) {
+
+                           if (data[j][i].sk%3 == 0) {html+='<li class="nor">'}else{html+='<li>'}
+                           if(j%2 == 0){
+                             html+='<div class="two">'
+                           } else{
+                             html+='<div>';
+                           }
+                           html+='<div class="imgs"><a href="{:U('Experience/detail')}?pid='+data[j][i].experience_id+'"><img src="'+data[j][i].imageUrl+'" alt="" /></a></div>';
+                           html+='<div class="info"><div class="info-bd"><a href="{:U('Experience/detail')}?pid='+data[j][i].experience_id+'">';
+                           html+='<h5>'+data[j][i].title+'</h5></a>';
+
+                           html+='<a href="{:U('Experience/detail')}?pid='+data[j][i].experience_id+'" class="more">READ MORE&gt;</a></div></div></div></li>';
+
+
+                        }
+                       
+                      
+
+
+                    }
+
+                    $("#list").append(html);
+                 
+                });
+            su =su+1;
+            
+     });
+    var nexts=$('.kuai').next('.swiper-slide').find('a').attr('href');
+    $('.nexts').attr('href',nexts);
+    var prevs=$('.kuai').next('.swiper-slide').find('a').attr('href');
+    $('.prevs').attr('href',prevs);
+</script>

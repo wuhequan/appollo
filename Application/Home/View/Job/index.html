@@ -1,0 +1,175 @@
+<include file="Public:header" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/recruit.css" />
+
+
+<!-- stance --><div class="stance"></div><!-- stance -->
+<!-- banner  -->
+<div class="banner" style="background-image:url({$banner['imageUrl']})">
+    <div class="container">
+        <h6>{$banner.title}</h6>
+        <p>{$banner.content|html_entity_decode}</p>
+    </div>
+</div>
+<!-- banner over -->
+<!-- main -->
+<div class="main">
+    <div class="container">
+        <h4>威士丹利<span>智能</span>大健康</h4>
+        <p>期待您的加入</p>
+        <div class="box">
+            <div class="info">
+                <div class="info-bd">
+                   {$others.content|html_entity_decode} 
+                </div>
+            </div>
+            <div class="imgs" style="background-image:url({$others.imageUrl} )"></div>
+        </div>
+        <div class="imgBox">
+            <img src="__PUBLIC__/images/recruit/imgs.png" alt="" />
+        </div>
+    </div>
+</div>
+<!-- main over -->
+<!-- job -->
+<div class="job">
+    <div class="container">
+        <h4>招聘职位</h4>
+        <p class="title">致力于物联网智能家居事业</p>
+        <ul>
+            <div id="list">
+                <volist name="job" id="v" key="k">             
+                <li <if condition="$k%4 eq 0">class="nor"</if>>
+                    <div class="info">
+                        <h5>{$v.title}</h5>
+                        <p class="one">任职要求：</p>
+                        {$v.content2|html_entity_decode|mb_substr=0,60,'utf-8'}...
+                        <a href="javascript:;" class="more" data_id="{$v.job_id}">more&gt;</a>
+                    </div>
+                </li>
+                </volist>
+            </div>
+        </ul>
+        <span href="" class="lookMore">查看更多</span>
+    </div>
+</div>
+<!-- job over -->
+<!-- alertBox -->
+<div class="alertBox">
+    <div class="alert">
+        <div class="close">
+            <img src="__PUBLIC__/images/recruit/close.png" alt="" />
+        </div>
+        <div class="info" id="qwe">
+            
+        </div>
+    </div>
+</div>
+<!-- alertBox over-->
+
+
+<include file="Public:footer" />
+<script src="__PUBLIC__/js/nav.js"></script>
+</body>
+<script>
+$(function(){
+   function show(){
+    $('.alertBox').show();
+	$('body').addClass('current');
+   };
+   function hide(){
+    $('.alertBox').hide();
+	$('body').removeClass('current');
+   }
+   $('.job ul li .info .more').click(function(event) {
+       show();
+	 
+   });
+   $('.alertBox .alert .close').click(function(event) {
+       hide();
+   });
+})
+</script>
+
+<script>
+$('.more').on('click',function (){
+        //alert(1);return;
+        var id=$(this).attr('data_id');
+        var html='';
+        $.post('{:U("Job/ajax")}',{id:id},function(data){
+            
+                    
+                    html+='<div class="top"><h5>'+data.title+'</h5><p>阿波罗（中国）有限公司</p>';
+                    html+='<span>'+data.showtime+'</span></div><div class="content"  id="cate"><div class="info_box">';
+                    html+=data.content;
+                    html+='<p class="only">岗位职责：</p>'+data.content1;
+                    html+='<p class="only">任职要求：</p>'+data.content2;
+                    html+='<p class="only">工作地址：</p><p>'+data.address+'</p>';
+                    html+='<span class="yinpin"><a href="'+data.link+'" style="color:#fff">应聘职位</a></span></div>';
+
+            $('#qwe').html(html);  
+        },'json');
+    });
+    
+
+   
+
+    
+    //查看更多
+    var su = 0;
+    $('.lookMore').click(function(){
+
+         $.get("{:U('Job/index_sub')}",{su:su},function(data){
+                    var html="";
+                    if(data==1)
+                    {
+                        $('.lookMore').html('无更多信息');    
+                        return;
+                    }
+                    for(var i in data) 
+                    {   
+                        if((data[i].k)%4 == 0){
+                            html+='<li class="nor">';
+                        }else{
+                            html+='<li>';
+                        }
+                        html+='<div class="info"><h5>'+data[i].title+'</h5> <p class="one">任职要求：</p>';
+                        html+=data[i].content2+'...';
+                        html+='<a href="javascript:;"  class="more" data_id='+data[i].job_id+'>more&gt;</a>';
+                    }
+
+                    $("#list").append(html);
+                    bbb();
+
+                 
+                });
+            su =su+1;
+            
+     });
+
+   
+    //招聘详情
+  function bbb(){
+    $('.more').on('click',function (){
+        //alert(1);return;
+        var id=$(this).attr('data_id');
+        var html='';
+        
+        $.post('{:U("Job/ajax")}',{id:id},function(data){
+
+                    html+='<div class="top"><h5>'+data.title+'</h5><p>阿波罗（中国）有限公司</p>';
+                    html+='<span>'+data.showtime+'</span></div><div class="content" id="cate"> <div class="info_box">';
+                    html+=data.content;
+                    html+='<p class="only">岗位职责：</p>'+data.content1;
+                    html+='<p class="only">任职要求：</p>'+data.content2;
+                    html+='<p class="only">工作地址：</p><p>'+data.address+'</p>';
+                    html+='<span class="yinpin"><a href="'+data.link+'" style="color:#fff">应聘职位</a></span></div>';
+
+            $('#qwe').html(html); 
+            $('.alertBox').show();  
+           
+        },'json');
+    });
+
+ }; 
+
+    </script>

@@ -1,0 +1,153 @@
+<include file="Public:header" />
+
+<include file="Public:leftNav" />	
+		<!-- BEGIN PAGE -->
+		<div class="page-content">
+			
+			<!-- BEGIN PAGE CONTAINER-->
+			<div class="container-fluid">
+				<!-- BEGIN PAGE HEADER-->
+				<div class="row-fluid">
+					
+						<!-- BEGIN PAGE TITLE & BREADCRUMB-->
+						<h3 class="page-title">
+							{$title} <small>{$base.title}</small>
+						</h3>
+						<!-- END PAGE TITLE & BREADCRUMB-->
+						<!-- BEGIN DASHBOARD STATS -->
+
+
+						<div class="row-fluid">
+							<div class="portlet box blue tabbable">
+							<div class="portlet-title">
+								<div class="caption">
+									<i class="icon-reorder"></i>
+									<span class="hidden-480">网站基本设置</span>
+								</div>
+							</div>
+							<div class="portlet-body form">
+								<div class="tabbable portlet-tabs">
+									<ul class="nav nav-tabs">
+										<li class="active"><a href="#portlet_tab1" data-toggle="tab">设置</a></li>
+
+									</ul>
+									<div class="tab-content">
+										<div class="tab-pane active" id="portlet_tab1">
+											<!-- BEGIN FORM-->
+											<volist name="data" id="vo">
+											<form action="" class="form-horizontal" id="form{$vo.site_meta_id}">
+												
+												<h3 class="form-section">{$vo["name"]["title"]}</h3>
+												<div class="control-group">
+													<label class="control-label">网站标题：</label>
+													<div class="controls">
+														<input type="text" placeholder="headtitle" name="headtitle" class="m-wrap large headtitle" value="{$vo.headtitle}">
+														<span class="help-inline">针对搜索引擎设置的 网页标题(headtitle)</span>
+													</div>
+												</div>
+												<div class="control-group">
+													<label class="control-label">搜索标题：</label>
+													<div class="controls">
+														<input type="text" placeholder="Meta Search Title" name="searchtitle" class="m-wrap large searchtitle" value="{$vo.searchtitle}">
+														<span class="help-inline">针对搜索引擎设置的 搜索标题(Search Title)</span>
+													</div>
+												</div>
+												<div class="control-group">
+													<label class="control-label">网页关键词：</label>
+													<div class="controls">
+														<input type="text" placeholder="Meta Keywords" name="keywords" class="m-wrap large keywords" value="{$vo.keywords}">
+														<span class="help-inline">针对搜索引擎设置的 关键词 (keywords)</span>
+													</div>
+												</div>
+												<div class="control-group">
+													<label class="control-label">网页作者：</label>
+													<div class="controls">
+														<input type="text" placeholder="Meta Author" name="author" class="m-wrap large author" value="{$vo.author}">
+														<span class="help-inline">针对搜索引擎设置的 网页作者 (author)</span>
+													</div>
+												</div>
+												<div class="control-group">
+													<label class="control-label">网页声明：</label>
+													<div class="controls">
+														<input type="text" placeholder="Meta Copyright" name="copyright" class="m-wrap large copyright" value="{$vo.copyright}">
+														<span class="help-inline">针对搜索引擎设置的 网页声明(copyright)</span>
+													</div>
+												</div>
+												<div class="control-group">
+													<label class="control-label">网页描述：</label>
+													<div class="controls">
+														<input type="text" placeholder="Meta Description" name="description" class="m-wrap large description" value="{$vo.description}">
+														<span class="help-inline">针对搜索引擎设置的 网页描述(description)</span>
+													</div>
+												</div>
+												
+												<div class="form-actions">
+													<button type="button" class="btn blue" onclick="submitClick('#form{$vo.site_meta_id}','{$vo.site_meta_id}')"><i class="icon-ok"></i>保存</button>
+													<button type="button" class="btn" onclick="javascript:window.history.go(-1);">返回</button>
+												</div>
+												
+											</form>
+											</volist>
+											<!-- END FORM-->  
+										</div>
+										
+
+
+									</div>
+								</div>
+							</div>
+						</div>
+
+
+
+
+						<!-- END DASHBOARD STATS -->
+				</div>
+				<!-- END PAGE HEADER-->
+			</div>
+			<!-- END PAGE CONTAINER-->    
+		</div>
+		<!-- END PAGE -->
+	</div>
+	<!-- END CONTAINER -->
+<include file="Public:footer" />
+	
+	<!-- BEGIN PAGE LEVEL SCRIPTS -->
+	<script src="__PUBLIC__/metronic/js/app.js"></script>
+	<script>
+		jQuery(document).ready(function() {    
+		   App.init(); // initlayout and core plugins
+		  
+		});
+	</script>
+	<!-- END JAVASCRIPTS -->
+	
+	
+	<script type="text/javascript">
+		
+		function submitClick(e,id){
+		    $.post(
+				"{:U('Admin/Site/meta_Submit')}",
+				{
+					'dataid':id,
+					'headtitle':$(e).find(".headtitle").val(),
+					'keywords':$(e).find(".keywords").val(),
+					'description':$(e).find(".description").val(),
+					'searchtitle':$(e).find(".searchtitle").val(),
+					'author':$(e).find(".author").val(),
+					'copyright':$(e).find(".copyright").val()
+				},
+				function(data){
+					if(data==1){
+		                success();
+					}else{
+						error();
+					}
+				}
+				
+			);
+		}
+	</script>
+</body>
+<!-- END BODY -->
+</html>

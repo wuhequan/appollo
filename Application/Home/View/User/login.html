@@ -1,0 +1,82 @@
+<include file="Public:header" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/login.css" />
+
+        <div class="main">
+            <div class="container">
+                <div class="main-bd">
+                    <div class="left">
+                        <span></span>
+                        <div class="title">
+                            <img src="__PUBLIC__/images/about/title.png" alt="" />
+                        </div>
+                        <p>As a world class manufacturer of shining in the world</p>
+                    </div>
+                    <form>
+                        <div class="form-bd">
+                            <h6>User login</h6>
+                            <div class="baseW">
+                                <label >
+                                    <img src="__PUBLIC__/images/about/name.png" alt="" />
+                                </label>
+                                <input type="text" placeholder="User name"  name="username"/>
+                            </div>
+                            <div class="baseW">
+                                <label >
+                                    <img src="__PUBLIC__/images/about/name01.png" alt="" />
+                                </label>
+                                <input type="password" placeholder="User name"  name="password"/>
+                            </div>
+                            <div class="baseW duan">
+                                <input type="text" placeholder="Verification code:"  name="verify"/>
+                                <div class="erweima">
+                                    <img alt="验证码" src="{:U('User/verify_c',array())}" title="点击刷新" class="fl">
+                                </div>
+                            </div>
+                            <button >Submit</button>
+                            <p><a href="{:U('User/register')}" >register</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- box over -->
+<include file="Public:footer" />
+
+<script type="text/javascript">
+    var captcha_img = $('.fl');
+    var verifyimg = captcha_img.attr("src");  
+    captcha_img.attr('title', '点击刷新');  
+    captcha_img.click(function(){  
+        if( verifyimg.indexOf('?')>0){  
+            $(this).attr("src", verifyimg+'&random='+Math.random());  
+        }else{  
+            $(this).attr("src", verifyimg.replace(/\?.*$/,'')+'?'+Math.random());  
+        }  
+    })
+
+    $('form').submit(function(){
+        
+            var data=$(this).serialize();
+            $.post('{:U("User/doform")}',data,function(data){
+                if(data==2){
+                  alert('用户名不能为空');
+                }
+                if(data==3){
+                  alert('密码不能为空');
+                }
+                if(data==4){
+                  alert('验证码有误');
+                }
+                if(data==1){
+                    window.location.href="/Index/index"; 
+                }
+                if(data==0){
+                    alert('用户名或者密码有误');
+                }
+                },'json')
+            return false;
+    })    
+    
+
+</script>

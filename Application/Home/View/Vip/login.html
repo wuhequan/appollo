@@ -1,0 +1,66 @@
+<include file="Public:header" />
+<title>威士丹利--登录</title>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/login.css" />
+<!-- stance --><div class="stance"></div><!-- stance -->
+<!-- login -->
+<div class="login" style="background-image:url(__PUBLIC__/images/login/bg.jpg)">
+    <div class="login-bd">
+        <div class="left">
+            <form >
+                <h5>用户登录</h5>
+                <div class="baseW">
+                    <input type="text" name="title" placeholder="账号"/>
+                </div>                
+                <div class="baseW">
+                    <input type="password" class="password"  name="password"  placeholder="密码"/>
+                </div>
+                <button>立即登录</button>
+                <!-- <div class="baseC">
+                    <input type="checkbox" id="s" />
+                    <label for="s">记住账号</label>
+                </div> -->
+            </form>
+        </div>
+        
+    </div>
+</div>
+<!-- login over-->
+<include file="Public:footer" />
+<script type="text/javascript">
+$(function(){
+    function s(e){
+        $(e).children().slideToggle(400)
+    };
+    $('.header .customer .child').click(function(event) {
+        var i = $(this);
+        s(i)
+    });
+    $('.header .mobile').click(function(event) {
+        $('.nav').toggleClass('show');
+    });
+})
+</script>
+<script type="text/javascript">
+    $('form').submit(function(){
+            var data=$(this).serialize();
+            $.post('{:U("Vip/dologin")}',data,function(data){
+                if(data==0){
+                  alert('登陆密码不正确');
+                }
+                if(data==2){
+                  alert('请输入登陆账号');
+                }
+                if(data==3){
+                  alert('请输入登陆密码');
+                }
+               
+                if(data==1){
+                    alert('感谢您的预约咨询，我们会尽快联系您');
+                    window.location.href="{:U("Vip/information")}";
+                }
+                },'json')
+            return false;
+    })    
+    
+
+</script>

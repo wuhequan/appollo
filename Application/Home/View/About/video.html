@@ -1,0 +1,230 @@
+<include file="Public:header" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/reveal-it.css" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/video-js.min.css" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/about-video.css" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/swiper.min.css" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/nav.css" />
+
+<!-- stance --><div class="stance"></div><!-- stance -->
+<!-- banner  -->
+<div class="banner" style="background-image:url(__PUBLIC__/images/about/banner.jpg)">
+    <div class="container">
+        <h6>智能，让生活更美好</h6>
+        <p>颠覆传统开关时代</p>
+        <p>智能生活 一触即发</p>
+    </div>
+</div>
+<!-- banner over -->
+<!-- nav -->
+<div class="nav-box">
+    <div class="two-nav">
+        <div class="mobile-nav00">
+            <div class="mobile-navChil">
+                <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <volist name="classify" id="v">                 
+                        <div class="swiper-slide">
+                        <a href="{:U('News/index')}?pid={$v.news_classify_id}">{$v.title}</a>
+                        </div>
+                    </volist>
+                    <div class="swiper-slide kuai">
+                        <span onclick="javascript:window.location.href='{:U('News/video1')}'">公司视频</span>
+                    </div>
+                </div>
+
+                <!-- Add Pagination -->
+                <div class="swiper-pagination"></div>
+                <!-- Add Arrows -->
+                <div class="swiper-button-next">
+                    <img src="__PUBLIC__/images/new/right.png" alt="" />
+                </div>
+                <div class="swiper-button-prev">
+                    <img src="__PUBLIC__/images/new/left.png" alt="" />
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- nav over -->
+<!-- video -->
+<div class="video">
+    <div class="container">
+        <div class="box">
+            <div class="imgs" style="background-image:url({$curr_video.imageUrl})">
+                <div class="btn">
+                    <img src="__PUBLIC__/images/video/btn.png" alt="" />
+                </div>
+            </div>
+            <div class="info">
+                <p>{$curr_video.title}</p>
+                <span>{:date('Y.m.d',$curr_video['showtime'])}</span>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="video_content">
+    <div class="bg"></div>
+    <div class="close"></div>
+    <video id="example_video_1" class="video-js vjs-default-skin" controls preload="none" width="880" height="640"
+      data-setup="{}">
+    <source src="{$curr_video.avUrl}" type='video/mp4' />
+    <source src="{$curr_video.avUrl1}" type='video/webm' />
+    <track kind="captions" src="demo.captions.vtt" srclang="en" label="English"></track><!-- Tracks need an ending tag thanks to IE9 -->
+    <track kind="subtitles" src="demo.captions.vtt" srclang="en" label="English"></track><!-- Tracks need an ending tag thanks to IE9 -->
+    </video>
+</div>
+<!-- video over -->
+<!-- main -->
+<div class="main">
+    <div class="container">
+        <ul>
+			<div id="list">  
+				<volist name="video" id="v"  key="k">    
+                    <volist name="v" id="vv" > 
+    					<li <if condition="$vv['sk']%3 eq 0">class="nor"</if>>
+                            <div <if condition="$k%2 eq 0"> class="two"</if>>
+        						<div class="imgBox" style="background-image:url({$vv.imageUrl})">
+        							<div class="btn"></div>
+        						</div>
+        						<div class="info">
+        							<h5>{$vv.title}</h5>
+        							<!-- <p>{:date('Y.m.d',$vv['showtime'])}</p> -->
+                                    <!-- <p><a href="{$videos[$k].avUrl}">点击下载</a></p> -->
+        						</div>
+                            </div>
+    					</li>  
+                    </volist>      
+				</volist>  
+			</div>
+        </ul>
+		<div class="lookMore">查看更多</div>
+    </div>
+</div>
+<!-- main over -->
+<div class="li-video">
+    <volist name="videos" id="v"  key="k">
+        <div class="content01">
+            <div class="bg"></div>
+            <div class="close"></div>
+            <video id="example_video_1" class="video-js vjs-default-skin" controls preload="none" width="880" height="640"
+              data-setup="{}">
+            <source src="{$v.avUrl}" type='video/mp4' />
+            <source src="{$v.avUrl1}" type='video/webm' />
+            <track kind="captions" src="demo.captions.vtt" srclang="en" label="English"></track><!-- Tracks need an ending tag thanks to IE9 -->
+            <track kind="subtitles" src="demo.captions.vtt" srclang="en" label="English"></track><!-- Tracks need an ending tag thanks to IE9 -->
+            </video>
+        </div>
+    </volist>
+    <!-- video over -->
+</div>
+<!-- more -->
+
+<!-- more over -->
+<include file="Public:footer" />
+<script src="__PUBLIC__/js/nav01.js"></script>
+<script src="__PUBLIC__/js/move3.js"></script>
+<script src="__PUBLIC__/js/video.min.js"> </script>
+<script src="__PUBLIC__/js/gallery.js"></script>
+
+<script type="text/javascript" src="__PUBLIC__/js/swiper.min.js"></script>
+<script type="text/javascript">
+
+function ligouzi(i){
+    var mySwiper = new Swiper('.swiper-container',{
+        pagination: '.swiper-pagination',
+        nextButton: '.swiper-button-next',
+        prevButton: '.swiper-button-prev',
+        slidesPerView: 3,
+        initialSlide :i,
+        loop:true,
+        centeredSlides : true,
+    })
+}
+$(".swiper-slide").each(function(i,n){
+    if($(this).hasClass("kuai")){
+        new ligouzi(i);
+    }
+});
+</script>
+<script type="text/javascript">
+$(function(){
+    $('.video .imgs .btn').click(function(event) {
+        $('.video_content').show();
+        $('.video-js .vjs-tech')[0].play();
+    });
+    $('.video_content .close').click(function(event) {
+        $(this).parent().hide();
+        $('.video-js .vjs-tech')[0].pause();
+    });
+
+    $('.main ul li').click(function(event) {
+        var ss = $(this).index();
+        $('.li-video .content01').eq(ss).show().siblings().hide();
+        $('.li-video .content01').eq(ss).find('.vjs-tech')[0].play();
+    });
+    // $('.main ul li').each(function(index, el) {
+    //     $(this).find('.close')click(function(event) {
+    //         $(this).parent().hide();
+    //         $('.main ul li').each(function(index, el) {
+    //             $(this).find('.vjs-tech')[0].pause();
+    //         });
+            
+    //     });
+    // });
+    $('.content01 .close').click(function(index) {
+       // alert(0)
+        $(this).parent().hide();
+        <volist name="videos" id="v"  key="k">
+            $('.video-js .vjs-tech')[{$k}].pause(); 
+        </volist>       
+    });
+})
+
+
+
+</script>
+
+<script type="text/javascript">
+
+var su = 0;
+    $('.lookMore').click(function(){
+         $.get("{:U('About/index_sub')}",{su:su},function(data){
+                    var html="";
+                    if(data==1)
+                    {
+                        $('.lookMore').html('无更多视频');    
+                        return;
+                    }
+                    for(var j in data) 
+                    {
+                        for(var i in data[j]) 
+                        {
+                            if (data[j][i].sk%3 == 0) {html+='<li class="nor">'}else{html+='<li>'}
+                            if(j%2 == 0){
+                              html+='<div class="two">'
+                            } else{
+                            html+='<div>';
+                             }
+                            html+='<div class="imgBox" style="background-image:url('+data[j][i].imageUrl+')"><div class="btn"></div></div><div class="info">';
+                            html+='<h5>'+data[j][i].title+'</h5>';
+                            html+='<p>'+data[j][i].showtime+'</p></div></div></li> ';
+
+                        }
+                    }
+
+                    $("#list").append(html);
+                     $('.main ul li').click(function(event) {
+                        var ss = $(this).index();
+                        $('.li-video .content01').eq(ss).show().siblings().hide();
+                        $('.li-video .content01').eq(ss).find('.vjs-tech')[0].play();
+                    });
+                 
+                });
+            su =su+1;
+        
+            
+     });
+
+
+</script>

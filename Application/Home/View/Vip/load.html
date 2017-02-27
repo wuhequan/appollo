@@ -1,0 +1,63 @@
+<include file="Public:header" />
+<title>威士丹利--下载</title>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/download.css" />
+
+
+<!-- stance --><div class="stance"></div><!-- stance -->
+<!-- banner  -->
+<div class="banner" style="background-image:url(__PUBLIC__/images/login/banner01.jpg)">
+    <div class="container">
+        <h6>智能，让生活更美好</h6>
+        <p>颠覆传统开关时代</p>
+        <p>智能生活 一触即发</p>
+    </div>
+</div>
+<!-- banner over -->
+<div class="title01">
+        <a href="{:U('Vip/information')}"><div class="list">活动资讯</div></a>
+    <a href="{:U('Vip/load')}"><div class="list on">资料下载</div></a>
+</div>
+<!-- main -->
+<div class="main">
+    <div class="container">
+        <ul>
+            <div id="list">  
+                <volist name="data" id="v"  key="k">     
+                    <li>
+                        <div class="left">{$v.title}</div>
+                        <a href="{$v.imageUrl}" class="download">立即下载</a>
+                    </li>
+                </volist>
+            </div>
+        </ul>
+        <span href="" class="more" style="cursor: pointer;">查看更多</span>
+    </div>
+</div>
+<!-- main over-->
+<include file="Public:footer" />
+
+<script type="text/javascript">
+
+var su = 0;
+    $('.more').click(function(){
+         $.get("{:U('Vip/news_sub1')}",{su:su},function(data){
+                    var html="";
+                    if(data==1)
+                    {
+                        $('.more').html('无更多资料');    
+                        return;
+                    }
+                    for(var i in data) 
+                    {
+                        html+='<li> <div class="left">'+data[i].title+'</div>';
+                        html+='<a href="'+data[i].imageUrl+'" class="download">立即下载</a></li>';
+                    }
+
+                    $("#list").append(html);
+                 
+                });
+            su =su+1;
+            
+     });
+
+</script>

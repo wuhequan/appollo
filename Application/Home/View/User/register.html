@@ -1,0 +1,77 @@
+<include file="Public:header" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/register.css" />
+
+        <div class="main">
+            <div class="container">
+                <div class="main-bd">
+                    <div class="small-box">
+                        <div class="title"><h4>Registration</h4><a href="" class="login">Existing accounts, to log in</a></div>
+                        <div class="txt">
+                            <form action="">
+                                <div class="baseW">
+                                    <label for="id1">*User name：</label>
+                                    <input type="text" name="username" />
+                                </div> 
+                                <div class="baseW">
+                                    <label for="id1">*Password：</label>
+                                    <input type="password" name="password"/>
+                                </div>
+                                <div class="baseW">
+                                    <label for="id1">*Confirm：</label>
+                                    <input type="password" name="cpassword"/>
+                                </div>
+                                <div class="baseW">
+                                    <label for="id1"> *Tel：</label>
+                                    <input type="text" name="phone"/>
+                                </div>
+                                <div class="baseW">
+                                    <label for="id1"> *E-mail：</label>
+                                    <input type="text" name="email"/>
+                                </div>
+                                <div class="baseW">
+                                    <label for=""></label>
+                                    <button>Register</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<include file="Public:footer" />
+<script type="text/javascript">
+    $('form').submit(function(){
+            var data=$(this).serialize();
+            $.post('{:U("User/doform01")}',data,function(data){
+                if(data==2){
+                  alert('用户名不能为空');
+                }
+                if(data==3){
+                  alert('密码不能为空');
+                }
+                if(data==4){
+                  alert('确认密码不能为空');
+                }
+                if(data==5){
+                  alert('电话号码不能为空');
+                }
+                if(data==6){
+                  alert('邮箱不能为空');
+                }
+                if(data==7){
+                  alert('输入的两次密码不一致');
+                }
+                if(data==1){
+                    alert('注册成功');
+                    window.location.href="/User/login"; 
+                }
+                if(data==0){
+                    alert('输入有误');
+                }
+                },'json')
+            return false;
+    })    
+    
+
+</script>

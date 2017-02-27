@@ -1,0 +1,102 @@
+<include file="Public:header" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/case.css" />
+
+
+<!-- stance --><div class="stance"></div><!-- stance -->
+<!-- banner  -->
+<div class="banner" style="background-image:url({$banner['imageUrl']})">
+    <div class="container">
+        <h6>{$banner.title}</h6>
+        <p>{$banner.content|html_entity_decode}</p>
+    </div>
+</div>
+<!-- banner over -->
+<!-- nav -->
+<div class="nav-box">
+    <div class="two-nav">
+       
+        <volist name="classify" id="v">
+            <div class="content">
+                <div class="container">
+                    <volist name="v" id="vv" >
+                        <a href="{:U('Cases/index')}?pid={$vv.project_classify_id}"><div class="child <if condition="$Think.get.pid eq $vv[project_classify_id]">in</if>"><div class="span_txt">{$vv.title}</div></div></a>
+                    </volist>
+                </div>
+            </div>
+        </volist>
+
+        <div class="max-container">
+            <div class="btn left-btn" onclick="banner01.todo({'direc':'-'})">
+                <img src="__PUBLIC__/images/new/left.png" alt="" />
+            </div>
+            <div class="btn right-btn" onclick="banner01.todo({'direc':'+'})">
+                <img src="__PUBLIC__/images/new/right.png" alt="" />
+            </div>
+        </div>
+    </div>
+</div>
+<!-- nav over -->
+<!-- main -->
+<div class="main">
+    <ul>
+        <div id="list">   
+            <volist name="data" id="v"  key="k">   
+                <li <if condition="$k%3 eq 0">class="nor"</if>>
+                    <div class="imgs">
+                        <a href="{:U('Cases/detail')}?pid={$v.project_id}"><img src="{$v.imageUrl}" alt="" /></a>
+                    </div>
+                    <div class="info">
+                        <div class="info-bd">
+                            <a href="{:U('Cases/detail')}?pid={$v.project_id}"><h5>{$v.title}</h5></a>
+                        </div>
+                    </div>
+                </li>
+            </volist>
+        </div>
+    </ul>
+	<div class="lookMore">查看更多</div>
+</div>
+<!-- mian over -->
+<include file="Public:footer" />
+<script src="__PUBLIC__/js/nav01.js"></script>
+<script src="__PUBLIC__/js/news.js"></script>
+
+<script type="text/javascript">
+function GetQueryString(name)
+{
+     var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+     var r = window.location.search.substr(1).match(reg);
+     if(r!=null)return  unescape(r[2]); return null;
+}
+var pid=GetQueryString("pid");
+
+
+var su = 0;
+
+		$('.lookMore').click(function(){
+         $.get("{:U('Cases/news_sub')}",{su:su,pid:pid},function(data){
+
+
+                    var html="";
+                    if(data==1)
+                    {
+                        
+                         $('.lookMore').html('无更多方案'); 
+                        return;
+                    }
+                    for(var i in data) 
+                    {
+                       if ((i+1)%3 == 0) {html+='<li class="nor">'}else{html+='<li>'}
+                       html+='<div class="imgs"><a href="{:U('Case/detail')}?pid='+data[i].project_id+'"><img src="'+data[i].imageUrl+'" alt="" /></a></div>';
+                       html+='<div class="info"><div class="info-bd"><a href="{:U('Case/detail')}?pid='+data[i].project_id+'">';
+                       html+='<h5>'+data[i].title+'</h5></a></div></div></li>';
+                    }
+
+                    $("#list").append(html);
+                 
+                });
+            su =su+1;
+            
+     });
+
+</script>

@@ -1,0 +1,21 @@
+<include file="Public:header" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/download.css" />
+
+
+        <div class="main">
+            <div class="container">
+                <div class="main-bd">
+                    <div class="small-box">
+                        <div class="title">PDF DOWNLOAD</div>
+                        <div class="txt">
+                            <volist name="data" id="v" key="k">         
+                                <a href="{$v.imageUrl}"><p>{$v.title}</p></a>
+                            </volist> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- box over -->
+<include file="Public:footer" />

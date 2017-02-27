@@ -1,0 +1,121 @@
+<include file="Public:header" />
+
+
+<!-- END PAGE LEVEL STYLES -->
+<include file="Public:leftNav" />	
+		<!-- BEGIN PAGE -->
+		<div class="page-content">
+			
+			<!-- BEGIN PAGE CONTAINER-->
+			<div class="container-fluid">
+				<!-- BEGIN PAGE HEADER-->
+				<div class="row-fluid">
+					
+						<!-- BEGIN PAGE TITLE & BREADCRUMB-->
+						<h3 class="page-title">
+							{$title} <small>{$base.title}</small>
+						</h3>
+						<!-- END PAGE TITLE & BREADCRUMB-->
+						<!-- BEGIN DASHBOARD STATS -->
+				
+
+
+
+						<div class="row-fluid">
+							<div class="portlet box blue">
+								<div class="portlet-title">
+									<div class="caption"><i class="icon-edit"></i>技术体验</div>
+									<div class="tools">
+										<a href="javascript:;" class="collapse"></a>
+										<a href="javascript:;" class="reload"></a>
+										<a href="javascript:;" class="remove"></a>
+									</div>
+								</div>
+
+								<div class="portlet-body">
+									<div class="btn-group">
+										<button class="btn green" onclick="javascript:window.location.href='{:U('Admin/Experience/video_add')}'">
+										添加 <i class="icon-plus"></i>
+										</button>
+									
+									</div>
+									<table class="table table-striped table-hover table-bordered" id="sample_editable_1">
+										<thead>
+											<tr>
+												<th class="sorting_desc"></th>
+												<th>标题</th>
+												<th>发布时间</th>
+												<th>优先级设置</th>
+												<th>状态</th>
+												<th>推优</th>
+												
+												<th></th>
+												<th></th>
+											</tr>
+										</thead>
+										<tbody>
+											<volist name="data" id="vo">
+											<tr class="" >
+												<td>{$vo.video_id}</td>
+												<td style="width: 30%;">{$vo.title}</td>
+												<td>{$vo.showtime}</td>
+												
+												<td>
+													<input type="text" class="span2" id="sort{$key}" value="{$vo.sort}" />
+													<input type="button" onclick="changeValue('#sort{$key}','video','video_id',{$vo.video_id},'sort',$('#sort{$key}').val())" class="btn span2" value="修改" />
+												</td>
+												
+												<td>
+													<if condition="$vo['status'] eq 0">
+														<a href="javascript:;" onclick="changeStatus(this,'video','video_id',{$vo.video_id},'status',{$vo['status']})" class="btn red icn-only"><i class="icon-remove-sign icon-white"></i></a>
+													<else/>
+														<a href="javascript:;" onclick="changeStatus(this,'video','video_id',{$vo.video_id},'status',{$vo['status']})" class="btn green icn-only"><i class="icon-ok-sign icon-white"></i></a>
+													</if>
+												</td>
+												
+												<td>
+													<if condition="$vo['showindex'] eq 0">
+														<a href="javascript:;" onclick="changeStatus(this,'video','video_id',{$vo.video_id},'showindex',{$vo['showindex']})" class="btn red icn-only"><i class="icon-remove-sign icon-white"></i></a>
+													<else/>
+														<a href="javascript:;" onclick="changeStatus(this,'video','video_id',{$vo.video_id},'showindex',{$vo['showindex']})" class="btn green icn-only"><i class="icon-ok-sign icon-white"></i></a>
+													</if>
+												</td>
+												
+												<td><a href="javascript:window.location.href='{:U('Admin/Experience/video_editor',array('id'=>$vo["video_id"],'action'=>'Paper','tpl'=>'index_AE'))}'">编辑</a></td>
+												<td><a onclick="del(this,'video','video_id',{$vo.video_id})">删除</a></td>
+												
+											</tr>
+											</volist>
+										</tbody>
+									</table>
+								</div>
+							</div>
+							<!-- END EXAMPLE TABLE PORTLET-->
+							<div class="row-fluid mainBtn">
+							{$pageShow}
+							</div>
+						</div>
+						<!-- END DASHBOARD STATS -->
+				</div>
+				<!-- END PAGE HEADER-->
+			</div>
+			<!-- END PAGE CONTAINER-->    
+		</div>
+		<!-- END PAGE -->
+	</div>
+	<!-- END CONTAINER -->
+<include file="Public:footer" />
+	<!-- BEGIN PAGE LEVEL SCRIPTS -->
+	<script src="__PUBLIC__/metronic/js/app.js"></script>
+	<script src="__PUBLIC__/metronic/js/table-editable-shop.js"></script>
+	<script>
+		jQuery(document).ready(function() {    
+		   App.init(); 
+		   TableEditable.init();
+		});
+	</script>
+	<!-- END JAVASCRIPTS -->
+
+</body>
+<!-- END BODY -->
+</html>

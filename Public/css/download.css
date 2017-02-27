@@ -1,0 +1,116 @@
+.banner {
+  width: 100%;
+  height: 550px;
+  background: no-repeat center center;
+  background-size: cover;
+  -webkit-background-size: cover;
+}
+.banner h6 {
+  font-size: 52px;
+  color: #eb6100;
+  padding-top: 180px;
+  padding-bottom: 30px;
+}
+.banner p {
+  font-size: 28px;
+  color: #444444;
+  line-height: 44px;
+}
+.title01 {
+  height: 80px;
+  border: 1px solid #e5e5e5;
+  font-size: 0;
+  text-align: center;
+}
+.title01 .list {
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+  vertical-align: middle;
+  overflow: hidden;
+  width: 124px;
+  height: 38px;
+  margin-right: 60px;
+  margin-top: 22px;
+  text-align: center;
+  line-height: 38px;
+  font-size: 18px;
+  color: #444444;
+}
+.title01 .list:hover,
+.title01 .on {
+  background: #eb6100;
+  border-radius: 20px;
+  -webkit-border-radius: 20px;
+  color: #fff;
+}
+.main {
+  overflow: hidden;
+  padding-bottom: 80px;
+}
+.main ul {
+  overflow: hidden;
+  padding-top: 20px;
+  padding-bottom: 50px;
+}
+.main ul li {
+  padding-top: 38px;
+  padding-bottom: 20px;
+  overflow: hidden;
+  border-bottom: 1px dotted #b7b7b7;
+}
+.main ul li .left {
+  width: 70%;
+  float: left;
+  font-size: 18px;
+  color: #666;
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.main ul li .download {
+  font-size: 14px;
+  color: #f0670e;
+  float: right;
+  background: url(../images/login/download.png) no-repeat left center;
+  padding-left: 20px;
+}
+.main .more {
+  width: 180px;
+  height: 45px;
+  background: #eb6100;
+  display: block;
+  margin: 0 auto;
+  border-radius: 30px;
+  -webkit-border-radius: 30px;
+  font-size: 16px;
+  color: #fff;
+  line-height: 45px;
+  text-align: center;
+}
+@media (max-width: 639px) {
+  .title01 .list {
+    margin-right: 20px;
+  }
+  .banner {
+    height: 300px;
+  }
+  .banner h6 {
+    padding-top: 80px;
+    padding-bottom: 20px;
+    font-size: 30px;
+  }
+  .banner p {
+    font-size: 20px;
+    line-height: 28px;
+  }
+  .main ul li .left {
+    font-size: 16px;
+    float: none;
+    width: 100%;
+  }
+  .main ul li .download {
+    margin-top: 16px;
+  }
+}

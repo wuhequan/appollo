@@ -1,0 +1,207 @@
+<include file="Public:header" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/metronic/css/jquery.nestable.css" />
+
+<!-- END PAGE LEVEL STYLES -->
+<include file="Public:leftNav" />	
+		<!-- BEGIN PAGE -->
+		<div class="page-content">
+			
+			<!-- BEGIN PAGE CONTAINER-->
+			<div class="container-fluid">
+				<!-- BEGIN PAGE HEADER-->
+				<div class="row-fluid">
+					
+						<!-- BEGIN PAGE TITLE & BREADCRUMB-->
+						<h3 class="page-title">
+							{$title} <small>{$base.title}</small>
+						</h3>
+						<!-- END PAGE TITLE & BREADCRUMB-->
+						<!-- BEGIN DASHBOARD STATS -->
+				
+
+						<div class="row-fluid">
+							
+								<div class="portlet box blue">
+									<div class="portlet-title">
+										<div class="caption"><i class="icon-comments"></i>底部菜单</div>
+										<div class="tools">
+											<a href="javascript:;" class="collapse"></a>
+											<a href="#portlet-config" data-toggle="modal" class="config"></a>
+											<a href="javascript:;" class="reload"></a>
+											<a href="javascript:;" class="remove"></a>
+										</div>
+									</div>
+									<div class="portlet-body">
+										<div class="dd" id="nestable_list_3">
+											<ol class="dd-list">
+												<volist name="data" id="vo">
+													<li class="dd-item dd3-item" data-id="{$vo.nav_foot_id}">
+														<div class="dd-handle dd3-handle"></div>
+														<div class="dd3-content">
+															<input type="text" class="m-wrap mini span1 title0" style="height: 12px !important;padding:0px !important;min-height:20px;" value="{$vo.title}"/>
+															<input type="button" class="btn mini green addNav" onclick="editorNavContent0(this,{$vo.nav_foot_id})" value="修改">
+															<input type="button" class="btn mini blue addNav" onclick="addNav(this,{$vo.nav_foot_id})" value="添加菜单">
+														</div>
+														<ol class="dd-list">
+															<volist name="vo['child']" id="vo1" key="j">
+															<li class="dd-item dd3-item" data-id="17">
+																<div class="dd-handle dd3-handle"></div>
+																<div class="dd3-content">
+																	<input type="text" class="m-wrap mini span1 title" style="height: 12px !important;padding:0px !important;min-height:20px;" value="{$vo1.title}"/>
+																	<input type="text" class="m-wrap mini span4 url" style="height: 12px !important;padding:0px;min-height:20px;" value="{$vo1.url}"/>
+																	<input type="button" class="btn mini green addNav" onclick="editorNavContent(this,{$vo1.father_id},{$vo1.nav_foot_id})" value="修改">
+																	<input type="button" class="btn mini red addNav" onclick="delNavContent(this,{$vo1.nav_foot_id})" value="删除">
+																</div>
+															</li>
+														</volist>
+														</ol>
+													</li>
+												</volist>
+												<!-- <li class="dd-item dd3-item" data-id="13">
+													<div class="dd-handle dd3-handle"></div>
+													<div class="dd3-content">Item 13</div>
+												</li>
+												<li class="dd-item dd3-item" data-id="14">
+													<div class="dd-handle dd3-handle"></div>
+													<div class="dd3-content">Item 14</div>
+												</li>
+												<li class="dd-item dd3-item" data-id="15">
+													<div class="dd-handle dd3-handle"></div>
+													<div class="dd3-content">Item 15</div>
+													<ol class="dd-list">
+														<li class="dd-item dd3-item" data-id="16">
+															<div class="dd-handle dd3-handle"></div>
+															<div class="dd3-content">Item 16</div>
+														</li>
+														<li class="dd-item dd3-item" data-id="17">
+															<div class="dd-handle dd3-handle"></div>
+															<div class="dd3-content">Item 17</div>
+														</li>
+														<li class="dd-item dd3-item" data-id="18">
+															<div class="dd-handle dd3-handle"></div>
+															<div class="dd3-content">Item 18</div>
+														</li>
+													</ol>
+												</li> -->
+											</ol>
+										</div>
+									</div>
+								</div>
+						</div>
+
+						
+						<!-- END DASHBOARD STATS -->
+				</div>
+				<!-- END PAGE HEADER-->
+			</div>
+			<!-- END PAGE CONTAINER-->    
+		</div>
+		<!-- END PAGE -->
+	</div>
+	<!-- END CONTAINER -->
+<include file="Public:footer" />
+	<!-- BEGIN PAGE LEVEL SCRIPTS -->
+	<script src="__PUBLIC__/metronic/js/jquery.nestable.js"></script>  
+	<script src="__PUBLIC__/metronic/js/ui-nestable.js"></script>    
+	<script src="__PUBLIC__/metronic/js/app.js"></script>
+
+	<script>
+		jQuery(document).ready(function() {    
+		   App.init(); 
+		   UINestable.init();
+		});
+		function addNav(e,id){
+			var parent=$(e).parent().parent();
+			var html='<li class="dd-item dd3-item" data-id="17">'+
+			'<div class="dd-handle dd3-handle"></div>'+
+			'<div class="dd3-content">'+
+			'<input type="text" class="m-wrap mini span1 title" style="height: 12px !important;padding:0px !important;min-height:20px;"/>'+
+			'<input type="text" class="m-wrap mini span4 url" style="height: 12px !important;padding:0px;min-height:20px;"/>'+
+			'<input type="button" class="btn mini green addNav" onclick="addNavContent(this,'+id+')" value="修改">'+
+			'</div>'+
+			'</li>';
+			parent.find(".dd-list").append(html);
+		}
+		function addNavContent(e,fatherid){
+			var parent=$(e).parent();
+			$.post(
+				"{:U('Admin/Nav/foot_Submit')}",
+				{
+					'father_id':fatherid,
+					'title':parent.find(".title").val(),
+					'url':parent.find(".url").val()
+				},
+				function(data){
+					if(data==0){
+		                errorNo();
+					}else{
+						$(e).attr("onclick","editorNavContent(this,"+fatherid+","+data+")")
+						success();
+					}
+				}
+				
+			);
+		}
+		function editorNavContent(e,fatherid,id){
+			var parent=$(e).parent();
+			$.post(
+				"{:U('Admin/Nav/foot_Submit')}",
+				{
+					'dataid':id,
+					'father_id':fatherid,
+					'title':parent.find(".title").val(),
+					'url':parent.find(".url").val()
+				},
+				function(data){
+					if(data==0){
+		                errorNo();
+					}else{
+						success();
+					}
+				}
+				
+			);
+		}
+		function editorNavContent0(e,id){
+			var parent=$(e).parent().parent();
+			$.post(
+				"{:U('Admin/Nav/foot_Submit')}",
+				{
+					'dataid':id,
+					'father_id':0,
+					'title':parent.find(".title0").val()
+				},
+				function(data){
+					if(data==0){
+		                errorNo();
+					}else{
+						success();
+					}
+				}
+				
+			);
+		}
+		function delNavContent(e,id){
+			var parent=$(e).parent();
+			$.post(
+				"{:U('Admin/Nav/foot_del')}",
+				{
+					'dataid':id
+				},
+				function(data){
+					if(data==0){
+		                errorNo();
+					}else{
+						$(e).parent().parent().hide();
+						success();
+					}
+				}
+				
+			);
+		}
+	</script>
+	<!-- END JAVASCRIPTS -->
+
+</body>
+<!-- END BODY -->
+</html>

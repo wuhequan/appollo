@@ -1,0 +1,236 @@
+<include file="Public:header" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/about-honor.css" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/swiper.min.css" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/nav.css" />
+
+<!-- stance --><div class="stance"></div><!-- stance -->
+<!-- banner  -->
+<div class="banner" style="background-image:url({$banner['imageUrl']})">
+    <div class="container">
+        <h6>{$banner.title}</h6>
+        <p>{$banner.content|html_entity_decode}</p>
+    </div>
+</div>
+<!-- banner over -->
+<!-- nav -->
+<div class="nav-box">
+    <div class="two-nav">
+        <div class="mobile-nav00">
+            <div class="mobile-navChil">
+                <div class="swiper-container">
+                <div class="swiper-wrapper">     
+                    <div class="swiper-slide">
+                        <a href="{:U('About/brand')}">企业简介</a>
+                    </div>
+                    <div class="swiper-slide">
+                        <a href="{:U('About/culture')}">企业文化</a>
+                    </div>
+                    <div class="swiper-slide kuai">
+                        <a href="{:U('About/honor')}">企业荣誉</a>
+                    </div>
+                    <div class="swiper-slide">
+                        <a href="{:U('About/info')}">光辉历程</a>
+                    </div>
+                </div>
+
+                <!-- Add Pagination -->
+                <div class="swiper-pagination"></div>
+                <!-- Add Arrows -->
+                <a href="" class="nexts">
+                    <div class="swiper-button-next">
+                        <img src="__PUBLIC__/images/new/right.png" alt="" />
+                    </div>
+                </a>
+                <a href="" class="prevs">
+                    <div class="swiper-button-prev">
+                        <img src="__PUBLIC__/images/new/left.png" alt="" />
+                    </div>
+                </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- nav over -->
+<div class="pic_box">
+  <div class="pic" id="pic">
+    <span class="prev"><img src="__PUBLIC__/images/about/left.png" alt="" /></span>
+    <span class="next"><img src="__PUBLIC__/images/about/right.png" alt="" /></span>
+    <ul>
+        <volist name="honor" id="v"  key="k"> 
+            <li class="pic{$k}" ic="{$v.honor_id}">
+                <div class="bg"></div>
+                <a href="#">
+                    <img src="{$v.imageUrl}" alt="" />
+                </a>
+                <p>{$v.year}</p>
+            </li>    
+        </volist>   
+    </ul>
+  </div>
+</div>
+<!-- <h4></h4> -->
+<!-- honor -->
+<div class="honor">
+    <div class="container">
+        <h6>荣誉奖项</h6>
+        <p class="link"></p>
+        <ul>
+            <li >
+               <volist name="honor" id="v"  key="k" > 
+                  <notempty name="v.content">
+                    <div class="pp info{$v.honor_id} {$k}" <if condition="$k neq 4">style="display:none;"</if>>
+                       <em>{$v.year}年</em>
+                       <span>{$v.content|html_entity_decode}</span>
+                    </div>
+                  </notempty> 
+               </volist> 
+            </li>            
+                        
+        </ul>
+    </div>
+</div>
+<!-- honor over -->
+<!-- footer -->
+
+<include file="Public:footer" />
+<script src="__PUBLIC__/js/nav01.js"></script>
+<script src="__PUBLIC__/js/scale.js"></script>
+<script src="__PUBLIC__/js/news.js"></script>
+<script src="__PUBLIC__/js/move3.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/swiper.min.js"></script>
+<script type="text/javascript">
+
+function ligouzi(i){
+    var mySwiper = new Swiper('.swiper-container',{
+        pagination: '.swiper-pagination',
+        // nextButton: '.swiper-button-next',
+        // prevButton: '.swiper-button-prev',
+        slidesPerView: 3,
+        initialSlide :i,
+        loop:true,
+        centeredSlides : true,
+        onlyExternal : true
+    })
+}
+$(".swiper-slide").each(function(i,n){
+    if($(this).hasClass("kuai")){
+        new ligouzi(i);
+    }
+});
+</script>
+
+<script type="text/javascript">
+var w = $(window).width()+17;
+if(w<639){
+    var height1 = $('#pic ul li.pic4 img').height();
+    $('#pic').height(height1);
+    $(window).resize(function(){
+        clearInterval($('#pic').height(height1));
+        var height1 = $('#pic ul li.pic4 img').height();
+    $('#pic').height(height1);
+    })
+}
+  window.onload=function()
+  {
+     var oPic=document.getElementById('pic');
+     var oPrev=getByClass(oPic,'prev')[0];
+     var oNext=getByClass(oPic,'next')[0];
+     
+     var aLi=oPic.getElementsByTagName('li');
+     
+     var arr=[];
+     
+     for(var i=0;i<aLi.length;i++)
+     {
+       var oImg=aLi[i].getElementsByTagName('img')[0];
+       var oImg1=aLi[i].getElementsByClassName('bg')[0];
+         arr.push([parseInt(getStyle(aLi[i],'left')),parseInt(getStyle(aLi[i],'top')),
+                   getStyle(aLi[i],'zIndex'),oImg.width,parseFloat(getStyle(aLi[i],'opacity')*100)])
+         //oImg1.Style=(aLi[i],'opacity')/100;
+     }
+     
+     
+     oPrev.onclick=function()
+     {
+         arr.push(arr[0]);
+         arr.shift();
+             for(var i=0;i<aLi.length;i++)
+             {
+                 var oImg=aLi[i].getElementsByTagName('img')[0];
+                 var oImg1=aLi[i].getElementsByClassName('bg')[0];
+                    aLi[i].style.zIndex=arr[i][2];
+
+                    //
+                    if(arr[i][2] == 10){
+                        var ic=$("#pic ul li").eq(i).attr('ic');
+                        //alert(ic);
+                        var classInfo=".info"+ic;
+                        $('.pp').stop().slideUp(400);
+                        $(classInfo).stop().slideDown(400);
+                    }
+
+
+                    startMove(aLi[i],{left:arr[i][0],top:arr[i][1],opacity:arr[i][4]});
+                    startMove(oImg,{width:arr[i][3]});
+
+             } 
+                 
+     }
+     
+    oNext.onclick=function()
+     {
+
+          arr.unshift(arr[arr.length-1]);
+          arr.pop();
+             for(var i=0;i<aLi.length;i++)
+             {
+                 var oImg=aLi[i].getElementsByTagName('img')[0];
+                 var oImg1=aLi[i].getElementsByClassName('bg')[0];
+                    
+                    aLi[i].style.zIndex=arr[i][2];
+
+                    //
+                    if(arr[i][2] == 10){
+                        var ic=$("#pic ul li").eq(i).attr('ic');
+                        //alert(ic);
+                        var classInfo=".info"+ic;
+                        $('.pp').stop().slideUp(400);
+                        $(classInfo).stop().slideDown(400);
+                    }
+
+
+
+
+                    startMove(aLi[i],{left:arr[i][0],top:arr[i][1],opacity:arr[i][4],});
+                    startMove(oImg,{width:arr[i][3]});
+                    //startMove(oImg1,{opacity:arr[1]});
+             }
+     }
+     
+     function getStyle(obj,name)
+     {
+           if(obj.currentStyle){ return obj.currentStyle[name]; }
+           else{ return getComputedStyle(obj,false)[name]; }
+     }
+  }
+  
+function getByClass(oParent,sClass)
+  {
+      var aResult=[];
+      var aEle=oParent.getElementsByTagName('*');
+      
+          for(var i=0;i<aEle.length;i++)
+          {
+             if(aEle[i].className==sClass)
+             {
+                aResult.push(aEle[i]);
+             }
+          }
+      return aResult;
+  }
+    var nexts=$('.kuai').next('.swiper-slide').find('a').attr('href');
+    $('.nexts').attr('href',nexts);
+    var prevs=$('.kuai').prev('.swiper-slide').find('a').attr('href');
+    $('.prevs').attr('href',prevs);
+</script>

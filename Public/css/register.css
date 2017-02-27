@@ -1,0 +1,231 @@
+.login {
+  width: 100%;
+  height: 700px;
+  background: no-repeat center center;
+  background-size: cover;
+  -webkit-background-size: cover;
+  padding-top: 160px;
+}
+.login .login-bd {
+  width: 93.75%;
+  max-width: 1000px;
+  height: 530px;
+  margin: 0 auto;
+  background: #fff;
+}
+.login .login-bd .left {
+  width: 600px;
+  float: left;
+  height: 100%;
+  position: relative;
+}
+.login .login-bd .left form {
+  width: 410px;
+  height: auto;
+  margin: 0 auto;
+  padding-top: 40px;
+  overflow: hidden;
+  padding-bottom: 60px;
+}
+.login .login-bd .left form h5 {
+  font-size: 20px;
+  color: #333;
+  padding-bottom: 36px;
+}
+.login .login-bd .left form .baseW {
+  width: 408px;
+  height: 54px;
+  border: 1px solid #e5e5e5;
+  border-radius: 6px;
+  -webkit-border-radius: 6px;
+  margin-bottom: 18px;
+  font-size: 14px;
+  color: #888;
+  line-height: 54px;
+}
+.login .login-bd .left form .baseW input {
+  width: 90%;
+  height: 100%;
+  background: url(../images/login/mail.png) no-repeat 10px center;
+  padding-left: 10%;
+}
+.login .login-bd .left form .baseW .password {
+  background: url(../images/login/word.png) no-repeat 10px center;
+}
+.login .login-bd .left form .baseR {
+  overflow: hidden;
+}
+.login .login-bd .left form .baseR .chil {
+  float: left;
+  overflow: hidden;
+  margin-right: 18px;
+}
+.login .login-bd .left form .baseR .chil input {
+  vertical-align: middle;
+}
+.login .login-bd .left form .baseR .chil label {
+  font-size: 14px;
+  color: #666;
+}
+.login .login-bd .left form button {
+  width: 140px;
+  height: 46px;
+  background: #eb6100;
+  text-align: center;
+  line-height: 46px;
+  font-size: 14px;
+  color: #fff;
+  border-radius: 6px;
+  -webkit-border-radius: 6px;
+  font-family: '微软雅黑';
+  margin-top: 30px;
+  float: left;
+}
+.login .login-bd .left form .baseC {
+  width: 80px;
+  height: 46px;
+  line-height: 46px;
+  float: right;
+  margin-top: 30px;
+}
+.login .login-bd .left form .baseC input {
+  vertical-align: middle;
+}
+.login .login-bd .left form .baseC label {
+  font-size: 12px;
+  color: #888;
+}
+.login .login-bd .left .forget {
+  width: 100%;
+  height: 100px;
+  background: #f3f4f6;
+  line-height: 100px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+.login .login-bd .left .forget .no {
+  padding-left: 36px;
+  font-size: 14px;
+  color: #444;
+  float: left;
+}
+.login .login-bd .left .forget .wanji {
+  float: right;
+  padding-right: 36px;
+  font-size: 14px;
+  color: #444;
+  padding-left: 26px;
+}
+.login .login-bd .left .forget .no:hover,
+.login .login-bd .left .forget .wanji:hover {
+  color: #eb6100;
+}
+.login .login-bd .right {
+  width: 400px;
+  height: 100%;
+  background: #2e323b;
+  float: right;
+}
+.login .login-bd .right .infos {
+  width: 82%;
+  margin: 0 auto;
+  padding-top: 125px;
+  text-align: center;
+  color: #fff;
+}
+.login .login-bd .right .infos h5 {
+  font-size: 18px;
+  padding-bottom: 30px;
+}
+.login .login-bd .right .infos p {
+  font-size: 12px;
+  line-height: 22px;
+}
+.login .login-bd .right .infos .more {
+  width: 190px;
+  height: 50px;
+  background: #fff;
+  display: block;
+  border-radius: 3px;
+  -webkit-border-radius: 3px;
+  font-size: 12px;
+  color: #444;
+  text-align: center;
+  line-height: 50px;
+  margin: 70px auto 0;
+  transition-duration: .4s;
+  -webkit-transition-duration: .4s;
+  -moz-transition-duration: .4s;
+  -ms-transition-duration: .4s;
+  -o-transition-duration: .4s;
+}
+.login .login-bd .right .infos .more:hover {
+  background: #eb6100;
+  color: #fff;
+}
+@media (max-width: 639px) {
+  .login {
+    padding-top: 0px;
+    height: auto ;
+    overflow: hidden;
+    background: #fff;
+    background-image: none !important;
+  }
+  .login .login-bd {
+    height: auto;
+    padding: 20px 0;
+    overflow: hidden;
+  }
+  .login .login-bd .left {
+    width: 100%;
+  }
+  .login .login-bd .right {
+    width: 100%;
+  }
+  .login .login-bd .left form {
+    width: 92%;
+  }
+  .login .login-bd .right .infos {
+    padding-top: 0;
+    padding: 50px 0;
+  }
+  .login .login-bd .left form .baseW {
+    width: 99.4%;
+  }
+  .login .login-bd .left .forget {
+    height: 70px;
+    line-height: 70px;
+    position: static;
+  }
+  .login .login-bd .left form .baseW input {
+    width: 86%;
+    padding-left: 14%;
+  }
+  .login .login-bd .left form .baseR .chil {
+    margin-right: 10px;
+    line-height: 24px;
+  }
+}
+@media (min-width: 640px) and (max-width: 1023px) {
+  .login .login-bd .left {
+    width: 60%;
+  }
+  .login .login-bd .right {
+    width: 40%;
+  }
+  .login .login-bd .left form {
+    width: 92%;
+  }
+  .login .login-bd .left form .baseW {
+    width: 98%;
+  }
+}
+@media (min-width: 1024px) and (max-width: 1560px) {
+  .login .login-bd .left {
+    width: 60%;
+  }
+  .login .login-bd .right {
+    width: 40%;
+  }
+}

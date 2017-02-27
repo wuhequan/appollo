@@ -1,0 +1,563 @@
+@keyframes scaleIn {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  80% {
+    transform: scale(1.02);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+@-webkit-keyframes scaleIn {
+  0% {
+    -webkit-transform: scale(0);
+    opacity: 0;
+  }
+  80% {
+    -webkit-transform: scale(1.02);
+  }
+  100% {
+    -webkit-transform: scale(1);
+    opacity: 1;
+  }
+}
+
+
+.lookMore {
+    width: 100px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    background: #eb6100;
+    cursor: pointer;
+    font-size: 14px;
+    color: #fff;
+    bottom: 0px;
+    left: 0;
+    margin: 0px auto 30px;
+}
+.banner {
+  width: 100%;
+  height: 550px;
+  background: no-repeat center center;
+  background-size: cover;
+  -webkit-background-size: cover;
+}
+.banner h6 {
+  font-size: 52px;
+  color: #eb6100;
+  padding-top: 180px;
+  padding-bottom: 30px;
+}
+.banner p {
+  font-size: 28px;
+  color: #727171;
+  line-height: 44px;
+}
+.nav-box {
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+  background: #e5e5e5;
+}
+.two-nav {
+  width: 82%;
+  height: 80px;
+  line-height: 80px;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+}
+.two-nav .content {
+  width: 100%;
+  height: 100%;
+  background: #e5e5e5;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.two-nav .content .container {
+  width: 90%;
+  max-width: 1100px;
+  margin: 0 auto;
+  font-size: 0;
+  text-align: center;
+}
+.two-nav .content .container .child {
+  width: 33%;
+  height: 100%;
+  font-size: 22px;
+  color: #444;
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+  vertical-align: middle;
+  overflow: hidden;
+  text-align: center;
+}
+.two-nav .content .container .child:hover,
+.two-nav .content .container .in {
+  background: #eb6100;
+  color: #fff;
+  font-size: 26px;
+}
+.two-nav .btn {
+  width: 42px;
+  height: 42px;
+  background: #bcbcbc;
+  line-height: 42px;
+  text-align: center;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto 0;
+  cursor: pointer;
+}
+.two-nav .btn:hover {
+  background: #eb6100;
+}
+.two-nav .left-btn {
+  left: 0;
+}
+.two-nav .right-btn {
+  right: 0;
+}
+.video {
+  overflow: hidden;
+  background: #f5f5f5;
+  padding-top: 60px;
+  padding-bottom: 110px;
+}
+.video .box {
+  width: 100%;
+  height: 600px;
+  background: #fff;
+}
+.video .imgs {
+  width: 880px;
+  height: 600px;
+  background: no-repeat center center;
+  background-size: cover;
+  -webkit-background-size: cover;
+  position: relative;
+  float: left;
+}
+.video .imgs .btn {
+  width: 79px;
+  height: 79px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  cursor: pointer;
+}
+.video .info {
+  width: 320px;
+  float: left;
+  padding-top: 238px;
+  text-align: center;
+}
+.video .info p {
+  font-size: 18px;
+  color: #444;
+  line-height: 30px;
+}
+.video .info span {
+  margin-top: 12px;
+  display: block;
+  font-size: 15px;
+  color: #888;
+}
+.video_content {
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 66;
+  display: none;
+}
+.video-js {
+  background: none;
+}
+.video-js .vjs-tech {
+  position: static;
+}
+.video_content .close {
+  width: 60px;
+  height: 60px;
+  background: url(../images/video/close.png) no-repeat center center;
+  position: absolute;
+  right: 40px;
+  top: 40px;
+  z-index: 6666;
+  cursor: pointer;
+}
+.content01 {
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 66;
+  display: none;
+}
+.content01 .close {
+  width: 60px;
+  height: 60px;
+  background: url(../images/video/close.png) no-repeat center center;
+  position: absolute;
+  right: 40px;
+  top: 40px;
+  z-index: 6666;
+  cursor: pointer;
+}
+.example_video_1-dimensions,
+.example_video_2-dimensions,
+.example_video_3-dimensions,
+.example_video_4-dimensions,
+.example_video_5-dimensions,
+.example_video_6-dimensions,
+.example_video_7-dimensions {
+  width: 1200px !important;
+  height: 600px !important;
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  margin: auto;
+}
+.video_content .bg {
+  width: 100%;
+  height: 100%;
+  background: #000;
+  opacity: 0.9;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.content01 .bg {
+  width: 100%;
+  height: 100%;
+  background: #000;
+  opacity: 0.9;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.video-js .vjs-big-play-button {
+  left: 46%;
+  top: 48%;
+}
+.main ul {
+  font-size: 0;
+  text-align: center;
+  padding-top: 40px;
+  padding-bottom: 30px;
+}
+.main ul li {
+  width: 32%;
+  max-width: 380px;
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+  vertical-align: middle;
+  overflow: hidden;
+  margin-right: 30px;
+}
+.main ul li .imgBox {
+  width: 100%;
+  max-width: 380px;
+  height: 260px;
+  background: no-repeat center center;
+  background-size: cover;
+  -webkit-background-size: cover;
+  position: relative;
+}
+.main ul li .imgBox .btn {
+  width: 60px;
+  height: 60px;
+  background: url(../images/video/btn.png) no-repeat center center;
+  background-size: 100% auto;
+  -webkit-background-size: 100% auto;
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  display: none;
+  cursor: pointer;
+}
+.main ul li .info {
+  padding-top: 26px;
+  padding-bottom: 32px;
+  text-align: left;
+}
+.main ul li .info h5 {
+  font-size: 16px;
+  color: #444;
+  display: inline-block;
+}
+.main ul li .info p {
+  font-size: 14px;
+  color: #888;
+  display: inline-block;
+  float: right;
+}
+.main ul li .info p a{
+  color: #888;
+}
+.main ul li:hover .imgBox .btn {
+  display: block;
+}
+.main ul .nor {
+  margin-right: 0;
+}
+.more {
+  width: 100%;
+  height: 110px;
+  background: #eef1f3;
+  line-height: 110px;
+  text-align: center;
+  cursor: pointer;
+}
+.more em {
+  width: 32px;
+  height: 32px;
+  border: 2px solid #888;
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+  vertical-align: middle;
+  overflow: hidden;
+  text-align: center;
+  line-height: 32px;
+  background: url(../images/video/more.png) no-repeat center center;
+  margin-right: 18px;
+}
+.more i {
+  font-size: 20px;
+  color: #666;
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+  vertical-align: middle;
+  overflow: hidden;
+}
+@media (max-width: 639px) {
+  .banner {
+    height: 200px;
+  }
+  .banner h6 {
+    padding-top:50px;
+    padding-bottom: 6px;
+    font-size: 22px;
+  }
+  .banner p {
+    font-size: 14px;
+    line-height: 22px;
+  }
+   .lookMore{width:90px;font-size:12px;height:30px;line-height:30px;margin:0px auto 20px;margin-top: 15px}
+  .main ul li {
+    width: 100%;
+    max-width: 380px;
+    margin-right: 0;
+    padding: 6px 0;
+    border-bottom:1px solid  #e5e5e5;
+  }
+  .main ul li .two .imgBox{
+    float:right;
+  }
+  .video .box {
+    height: auto;
+    overflow: hidden;
+    padding-bottom: 0px;
+  }
+  .video .imgs {
+    width: 100%;
+    height: 200px;
+  }
+  .video .info {
+    width: 100%;
+    padding-top: 10px;
+	text-align:left;
+  }
+  .video {
+    padding-bottom: 0px;
+    padding-top: 30px;
+	background:#fff;
+  }
+  .main ul {
+    padding-bottom: 0px;
+    padding-top: 20px;
+  }
+  .two-nav .content .container .child {
+    font-size: 14px;
+  }
+  .two-nav .content .container .child:hover,
+  .two-nav .content .container .in {
+    font-size: 14px;
+  }
+  .two-nav {
+    width: 93.75%;
+    height: 50px;
+    line-height: 50px;
+  }
+  .two-nav .content .container {
+    width: 86%;
+  }
+  .two-nav .btn {
+    width: 30px;
+    height: 30px;
+    line-height:30px;
+  }
+  .main ul li .imgBox {
+    width: 50%;
+    height: 80px;
+    float:left;
+  }
+  .main ul li .imgBox .btn{width: 20px;height: 20px;display:block;}
+  .main ul li .info h5{font-size: 14px;}
+  .main ul li .info{width:48%;padding-left:2%;float:left;padding-top: 10px;padding-bottom: 20px;}
+  .main ul li .info p{font-size: 14px;padding-top: 8px;}
+  .example_video_1-dimensions,
+  .example_video_2-dimensions,
+  .example_video_3-dimensions,
+  .example_video_4-dimensions,
+  .example_video_5-dimensions,
+  .example_video_6-dimensions,
+  .example_video_7-dimensions {
+    width: 100% !important;
+    height: 280px !important;
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+  }
+  .video .imgs .btn {
+    width: 40px;
+    height: 40px;
+  }
+  .video .info p{font-size: 14px;line-height:24px;}
+  .video .info span{font-size: 12px;margin-top: 4px;}
+  .video .imgs .btn img {
+    width: 100%;
+    height: auto;
+  }
+}
+@media (min-width: 640px) and (max-width: 1023px) {
+  .main ul li {
+    width: 48%;
+    margin-right: 10px;
+  }
+  .main ul .nor {
+    margin-right: 10px;
+  }
+  .main ul li .imgBox {
+    width: 100%;
+    height: 220px;
+  }
+  .video .box {
+    height: auto;
+    overflow: hidden;
+    padding-bottom: 20px;
+  }
+  .video .imgs {
+    width: 100%;
+    height: 500px;
+  }
+  .video .info {
+    width: 100%;
+    padding-top: 20px;
+  }
+  .video {
+    padding-bottom: 40px;
+    padding-top: 30px;
+  }
+  .main ul {
+    padding-bottom: 60px;
+    padding-top: 30px;
+  }
+  .two-nav .content .container .child {
+    font-size: 18px;
+  }
+  .two-nav .content .container .child:hover,
+  .two-nav .content .container .in {
+    font-size: 20px;
+  }
+  .two-nav {
+    width: 93.75%;
+    height: 70px;
+    line-height: 70px;
+  }
+  .two-nav .content .container {
+    width: 86%;
+  }
+  .example_video_1-dimensions,
+  .example_video_2-dimensions,
+  .example_video_3-dimensions,
+  .example_video_4-dimensions,
+  .example_video_5-dimensions,
+  .example_video_6-dimensions,
+  .example_video_7-dimensions {
+    width: 93.75% !important;
+    height: 410px !important;
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+  }
+}
+@media (min-width: 1024px) and (max-width: 1335px) {
+  .video .box {
+    height: auto;
+    overflow: hidden;
+  }
+  .video .imgs {
+    width: 70%;
+    height: 540px;
+  }
+  .video .info {
+    width: 30%;
+    padding-top: 214px;
+  }
+  .main ul li {
+    width: 32%;
+    margin-right: 10px;
+  }
+  .main ul li .imgBox {
+    width: 100%;
+    height: 220px;
+  }
+  .example_video_1-dimensions,
+  .example_video_2-dimensions,
+  .example_video_3-dimensions,
+  .example_video_4-dimensions,
+  .example_video_5-dimensions,
+  .example_video_6-dimensions,
+  .example_video_7-dimensions {
+    width: 93.75% !important;
+    height: 510px !important;
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+  }
+}

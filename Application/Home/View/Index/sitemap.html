@@ -1,0 +1,82 @@
+<include file="Public:header" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/sitemap.css" />
+<!-- stance -->
+<div class="stance"></div>
+<!-- stance over -->
+<!-- banner -->
+
+<!-- banner over -->
+
+<!-- main -->
+<div class="main">
+    <!-- mainHead -->
+   
+    <!-- mainHead over -->
+    <!-- mainContent -->
+    <div class="mainContent">
+        <div class="container">
+            
+            <div class="mSub sub1"></div>
+            <div class="mSub sub2"></div>
+            <div class="mSub sub3"></div>
+            
+            <!-- mContent -->
+            <div class="mContent mContent1">
+               
+                <div class="mainInfo">
+                     <p class="mTitle">网站地图</p>
+                     <div class="mInfo">
+                        <ul>
+                            <a href="__ROOT__/index.html"><p class="max-title">主页</p></a>
+                            <p class="max-title">关于我们</p>
+                            <a href="{:U('About/brand')}"><li>品牌介绍</li></a>
+                            <a href="{:U('About/culture')}"><li>企业文化</li></a>
+                            <a href="{:U('About/honor')}"><li>荣誉资质</li></a>
+                            <a href="{:U('About/info')}"><li>光辉历程</li></a>
+                            <a href="{:U('About/video')}"><li>视频中心</li></a>
+
+                            
+                            <p class="max-title">新闻中心</p>
+                            <volist name="arr" id="v">
+                                <a href="{:U('News/index',array('pid'=>$v['news_classify_id']))}"><li>{$v.title}</li></a>
+                            </volist>
+
+                            
+                        </ul>
+                        <ul>
+                            <p class="max-title">产品</p>
+                            <volist name="arr1" id="v">
+                                <a href="{:U('Product/index',array('pid'=>$v['product_classify_id']))}"><li>{$v.title}</li></a>
+                            </volist>
+                        </ul>
+
+                        <ul>
+                            <p class="max-title">解决方案</p>
+                            <volist name="arr2" id="v">
+                                <a href="{:U('Cases/index',array('pid'=>$v['project_classify_id']))}"><li>{$v.title}</li></a>
+                            </volist> 
+                            <a href="{:U('Join/index')}"><p class="max-title">招商加盟</p></a>
+                            <a href="{:U('Contact/index')}"><p class="max-title">联系我们</p></a>
+                            <a href="{:U('Job/index')}"><p class="max-title">人才招聘</p></a>
+                            <a href="{:U('Join/index')}"><p class="max-title">网上商城</p></a>
+                            <a href="{:U('Join/index')}"><p class="max-title">VIP专区</p></a>
+                        </ul>
+
+
+                        
+                     </div>
+                     
+                </div>
+            </div>
+            <!-- mContent over -->
+
+        </div>
+    </div>
+    <!-- mainContent over -->
+    
+    
+    
+</div>
+<!-- main over -->
+<include file="Public:footer" />
+<script src="__PUBLIC__/js/copyright.js"></script>

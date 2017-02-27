@@ -1,0 +1,482 @@
+<include file="Public:header" />
+
+<include file="Public:leftNav" />	
+		<!-- BEGIN PAGE -->
+		<div class="page-content">
+			
+			<!-- BEGIN PAGE CONTAINER-->
+			<div class="container-fluid">
+				<!-- BEGIN PAGE HEADER-->
+				<div class="row-fluid">
+					
+						<!-- BEGIN PAGE TITLE & BREADCRUMB-->
+						<h3 class="page-title">
+							{$title} <small>{$base.title}</small>
+						</h3>
+						<!-- END PAGE TITLE & BREADCRUMB-->
+						<!-- BEGIN DASHBOARD STATS -->
+						
+						<div class="row-fluid">
+
+
+
+							<div class="tab-pane active" >
+								<div class="portlet box blue ">
+									<div class="portlet-title">
+										<div class="caption"><i class="icon-reorder"></i>产品<input type="hidden" id="dataid" value="{$data.product_id}" /></div>
+										<div class="tools">
+											<a href="javascript:;" class="collapse"></a>
+											
+											<a href="javascript:;" class="reload"></a>
+											<a href="javascript:;" class="remove"></a>
+										</div>
+									</div>
+									<div class="portlet-body form">
+										
+										<!-- BEGIN FORM-->
+									
+										<form action="#" class="form-horizontal form-bordered">
+											<h3 class="form-section">SITE META</h3>
+											<div class="control-group">
+													<label class="control-label">网页标题：</label>
+													<div class="controls">
+														<input type="text" placeholder="Meta Headtitle" name="headtitle" id="headtitle" class="m-wrap large headtitle" value="{$data.headtitle}">
+														<span class="help-inline">针对搜索引擎设置的 网页标题 (headtitle)</span>
+													</div>
+											</div>
+											<div class="control-group">
+													<label class="control-label">网页作者：</label>
+													<div class="controls">
+														<input type="text" placeholder="Meta Author" name="author" id="author" class="m-wrap large author" value="{$data.author}">
+														<span class="help-inline">针对搜索引擎设置的 网页作者 (author)</span>
+													</div>
+											</div>
+											<div class="control-group">
+												<label class="control-label">搜索标题：</label>
+												<div class="controls">
+													<input type="text" placeholder="Meta Search Title" name="searchtitle" id="searchtitle" class="m-wrap large" value="{$data.searchtitle}">
+													<span class="help-inline">针对搜索引擎设置的 搜索标题(Search Title)</span>
+												</div>
+											</div>
+											<div class="control-group">
+												<label class="control-label">网页关键词：</label>
+												<div class="controls">
+													<input type="text" placeholder="Meta Keywords" name="keywords" id="keywords" class="m-wrap large" value="{$data.keywords}">
+													<span class="help-inline">针对搜索引擎设置的 关键词 (keywords)</span>
+												</div>
+											</div>
+											<div class="control-group">
+												<label class="control-label">网页声明：</label>
+												<div class="controls">
+													<input type="text" placeholder="Meta Copyright" name="copyright" id="copyright" class="m-wrap large" value="{$data.copyright}">
+													<span class="help-inline">针对搜索引擎设置的 网页声明(copyright)</span>
+												</div>
+											</div>
+											<div class="control-group">
+												<label class="control-label">网页描述：</label>
+												<div class="controls">
+													<input type="text" placeholder="Meta Description" name="description" id="description" class="m-wrap large" value="{$data.description}">
+													<span class="help-inline">针对搜索引擎设置的 网页描述(description)</span>
+												</div>
+											</div>
+											<h3 class="form-section">CONTENT</h3>
+
+											<div class="control-group">
+												<label class="control-label">产品名</label>
+												<div class="controls">
+													<input type="text" placeholder="Title" name="title" id="title" class="m-wrap large" value="{$data.title}">
+													<span class="help-inline"></span>
+												</div>
+											</div>
+
+											<!-- <div class="control-group">
+												<label class="control-label">产品别名</label>
+												<div class="controls">
+													<input type="text" placeholder="产品别名" name="title1" id="title1" class="m-wrap large" value="{$data.title1}">
+													<span class="help-inline"></span>
+												</div>
+											</div>
+											 -->
+											<div class="control-group">
+												<label class="control-label">列表页图片</label>
+												<div class="controls">
+													
+													<img id="imageShow" src="{$data.imageUrl}" />
+													<input type="hidden" id="imageUrl" value="{$data.imageUrl}" />
+													
+														<div id="queue"></div>
+														<input id="file_upload" name="file_upload" type="file" multiple="true">
+													<span class="help-inline">图片比例 （540*500）</span>
+												</div>
+											</div>
+	
+										
+											<div class="control-group">
+												<label class="control-label">分类</label>
+												<div class="controls">
+												{$dataclassify}
+												</div>
+											</div>
+
+											<!-- <div class="control-group">
+                                                <label class="control-label">材质</label>
+                                                <div class="controls">
+                                                    <volist name="material" id="vo">
+                                                    <label class="checkbox">
+                                                    <input type="checkbox" name="product_material_id" class="product_material_id" <if condition="in_array($vo['product_material_id'],$data['product_material_id'])">checked</if> value="{$vo.product_material_id}" />
+                                                    {$vo.title}
+                                                    </label>
+                                                    </volist>
+                                                    
+                                                    <span class="help-inline"></span>
+                                                </div>
+                                            </div>
+											 -->
+
+											<!-- <div class="control-group">
+												<label class="control-label">所属系列</label>
+												<div class="controls">
+												{$dataclassify2}
+												</div>
+											</div> -->
+
+											<!-- <div class="control-group">
+												<label class="control-label">(网页产品名)显示颜色</label>
+												<div class="controls">
+													<select class='span3 m-wrap category' name='color' id='color' tabindex='1'>
+														<option value='0' <if condition="$data['color'] eq 0">selected</if>>黑色</option>
+														<option value='1' <if condition="$data['color'] eq 1">selected</if>>白色</option>
+													</select>
+												</div>
+											</div> -->
+										<!--
+											<div class="control-group">
+												<label class="control-label">购买入口链接</label>
+												<div class="controls">
+													<input type="text" placeholder="link" name="link" id="link" class="m-wrap large" value="{$data.link}">
+													<span class="help-inline"></span>
+												</div>
+											</div>
+										
+											<div class="control-group">
+												<label class="control-label">市场价格</label>
+												<div class="controls">
+													<input type="text" placeholder="市场价格" name="price" id="price" class="m-wrap large" value="{$data.price}">
+													<span class="help-inline"></span>
+												</div>
+											</div>
+
+											<div class="control-group">
+												<label class="control-label">上架价格</label>
+												<div class="controls">
+													<input type="text" placeholder="上架价格" name="price1" id="price1" class="m-wrap large" value="{$data.price1}">
+													<span class="help-inline"></span>
+												</div>
+											</div>
+											-->
+
+											<div class="control-group">
+												<label class="control-label">产品小图</label>
+												<div class="controls">
+													<div id="maxShow">
+														<volist name="data['maxUrls']" id="vo" >
+															<div class="child{$i}" style="position:relative;display: inline-block;   margin: 0 10px;">
+																<img class="closeImg" style="position:absolute;top:-8px;right:-8px;cursor:pointer;" onclick="imagesClose('.child{$i}')" src="/Public/uploadify/uploadify-cancel.png" />
+																<img class="childImg" style="width:100px;" src="{$vo}">
+																<input class="saveImg" name="maxUrls[]" type="hidden" value="{$vo}" />
+															</div>
+														</volist>
+													</div>
+														<div id="queue"></div>
+														<input id="max_upload" name="max_upload" type="file" multiple="true">
+													<span class="help-inline" >图片比例 （400*440）</span>
+
+												</div>
+											</div>
+
+											<!-- <div class="control-group">
+												<label class="control-label">产品颜色图</label>
+												<div class="controls">
+													<div id="maxShow3">
+														<volist name="data['maxUrls3']" id="vo" >
+															<div class="child3{$i}" style="position:relative;display: inline-block;   margin: 0 10px;">
+																<img class="closeImg" style="position:absolute;top:-8px;right:-8px;cursor:pointer;" onclick="imagesClose('.child3{$i}')" src="/Public/uploadify/uploadify-cancel.png" />
+																<img class="childImg" style="width:100px;" src="{$vo}">
+																<input class="saveImg3" name="maxUrls3[]" type="hidden" value="{$vo}" />
+															</div>
+														</volist>
+													</div>
+														<div id="queue"></div>
+														<input id="max_upload3" name="max_uploa3" type="file" multiple="true">
+													<span class="help-inline" >图片比例 （290*290）</span>
+
+												</div>
+											</div> -->
+
+											<div class="control-group">
+												<label class="control-label">型号</label>
+												<div class="controls">
+													<input type="text" placeholder="型号" name="type" id="type" class="m-wrap large" value="{$data.type}">
+													<span class="help-inline"></span>
+												</div>
+											</div>
+
+											<div class="control-group">
+												<label class="control-label">功耗</label>
+												<div class="controls">
+													<input type="text" placeholder="功耗" name="power" id="power" class="m-wrap large" value="{$data.power}">
+													<span class="help-inline"></span>
+												</div>
+											</div>
+
+											<div class="control-group">
+												<label class="control-label">规格</label>
+												<div class="controls">
+													<input type="text" placeholder="规格" name="norms" id="norms" class="m-wrap large" value="{$data.norms}">
+													<span class="help-inline"></span>
+												</div>
+											</div>
+
+											<div class="control-group">
+												<label class="control-label">电源</label>
+												<div class="controls">
+													<input type="text" placeholder="电源" name="source" id="source" class="m-wrap large" value="{$data.source}">
+													<span class="help-inline"></span>
+												</div>
+											</div>
+
+											<div class="control-group">
+												<label class="control-label">充电方式</label>
+												<div class="controls">
+													<input type="text" placeholder="充电方式" name="electricize" id="electricize" class="m-wrap large" value="{$data.electricize}">
+													<span class="help-inline"></span>
+												</div>
+											</div>
+
+											<div class="control-group">
+												<label class="control-label">组网方式</label>
+												<div class="controls">
+													<input type="text" placeholder="组网方式" name="networking" id="networking" class="m-wrap large" value="{$data.networking}">
+													<span class="help-inline"></span>
+												</div>
+											</div>
+
+											<div class="control-group">
+												<label class="control-label">颜色</label>
+												<div class="controls">
+													<input type="text" placeholder="颜色" name="color" id="color" class="m-wrap large" value="{$data.color}">
+													<span class="help-inline"></span>
+												</div>
+											</div>
+
+											
+
+											<div class="control-group">
+												<label class="control-label">产品详情图</label>
+												<div class="controls">
+													<div id="maxShow1">
+														<volist name="data['maxUrls1']" id="vo" >
+															<div class="child1{$i}" style="position:relative;display: inline-block;   margin: 0 10px;">
+																<img class="closeImg" style="position:absolute;top:-8px;right:-8px;cursor:pointer;" onclick="imagesClose('.child1{$i}')" src="/Public/uploadify/uploadify-cancel.png" />
+																<img class="childImg" style="width:100px;" src="{$vo}">
+																<input class="saveImg1" name="maxUrls1[]" type="hidden" value="{$vo}" />
+															</div>
+														</volist>
+													</div>
+														<div id="queue"></div>
+														<input id="max_upload1" name="max_upload1" type="file" multiple="true">
+													<span class="help-inline" >图片比例 （1200*526）不传则不显示</span>
+
+												</div>
+											</div>
+
+											<div class="control-group">
+												<label class="control-label">购买入口链接</label>
+												<div class="controls">
+													<input type="text" placeholder="购买入口链接" name="link" id="link" class="m-wrap large" value="{$data.link}">
+													<span class="help-inline"></span>
+												</div>
+											</div>
+
+											
+											<!-- <div class="control-group">
+												<label class="control-label">简介轮播图</label>
+												<div class="controls">
+													<div id="maxShow2">
+														<volist name="data['maxUrls2']" id="vo" >
+															<div class="child2{$i}" style="position:relative;display: inline-block;   margin: 0 10px;">
+																<img class="closeImg" style="position:absolute;top:-8px;right:-8px;cursor:pointer;" onclick="imagesClose('.child2{$i}')" src="/Public/uploadify/uploadify-cancel.png" />
+																<img class="childImg" style="width:100px;" src="{$vo}">
+																<input class="saveImg2" name="maxUrls2[]" type="hidden" value="{$vo}" />
+															</div>
+														</volist>
+													</div>
+														<div id="queue"></div>
+														<input id="max_upload2" name="max_upload2" type="file" multiple="true">
+													<span class="help-inline" >图片比例 （960*440）</span>
+
+												</div>
+											</div> -->
+										
+
+											<div class="control-group">
+												<label class="control-label">发布时间</label>
+												<div class="controls">
+													<input type="text" placeholder="Show time" name="showtime" id="showtime" class="m-wrap large" value="{$data.showtime}">
+													<span class="help-inline">例如 2016-4-18 不填写则为当前时间</span>
+												</div>
+											</div>
+											<div class="control-group">
+												<label class="control-label">优先级</label>
+												<div class="controls">
+													<input type="text" placeholder="Sort" name="sort" id="sort" class="m-wrap large" value="{$data.sort}">
+													<span class="help-inline">默认为0</span>
+												</div>
+											</div>
+
+											<div class="control-group">
+												<label class="control-label">探索其它案例</label>
+												<div class="controls">
+													<input type="text" placeholder="探索其它案例" name="recommen" id="recommen" class="m-wrap large" value="{$data.recommen}">
+													<span class="help-inline">填写产品ID，前台显示按优先级排序，和填写顺序无关，用","分开，最多填十个，ID格式如:1,2,3,4,5,6,7,8,9,10</span>
+												</div>
+											</div>
+
+											<div class="control-group">
+												<label class="control-label">产品介绍</label>
+												<div class="controls">
+													<textarea cols="80" name="content" rows="10">{$data.content}</textarea>
+												</div>
+											</div>
+											
+											
+											
+						
+											<div class="form-actions">
+												<button type="button" onclick="submitClick()" class="btn blue"><i class="icon-ok"></i>保存</button>
+												<button type="button" class="btn" onclick="javascript:window.history.go(-1);">返回</button>
+											</div>
+										</form>
+										<!-- END FORM-->  
+									</div>
+								</div>
+							</div>
+
+
+
+
+
+							
+						</div>
+						<!-- END DASHBOARD STATS -->
+				</div>
+				<!-- END PAGE HEADER-->
+			</div>
+			<!-- END PAGE CONTAINER-->    
+		</div>
+		<!-- END PAGE -->
+	</div>
+	<!-- END CONTAINER -->
+<include file="Public:footer" />
+	
+	<!-- BEGIN PAGE LEVEL SCRIPTS -->
+	<script src="__PUBLIC__/metronic/js/app.js"></script>
+
+	<script>
+		jQuery(document).ready(function() {    
+		   App.init(); // initlayout and core plugins
+		});
+	</script>
+	<!-- END JAVASCRIPTS -->
+	<script type="text/javascript">
+		$(function(){
+			
+
+			var showEle="imageShow";
+			var saveEle="imageUrl";
+			var ele="file_upload";
+
+			var imageObj=new images(timestamp,token,swf,uploader,showEle,saveEle,ele,"src");
+			setTimeout(imageObj.upload(),10);
+
+			showEle="maxShow";
+		    ele="max_upload";
+		    var imageObja=new imagesMore(timestamp,token,swf,uploader,showEle,ele,"maxUrls");
+		    setTimeout(imageObja.upload(),10);
+
+		    showEle1="maxShow1";
+		    ele1="max_upload1"; 
+		    var imageObja1=new imagesMore(timestamp,token,swf,uploader,showEle1,ele1,"maxUrls1",'saveImg1');
+		    setTimeout(imageObja1.upload(),10);
+
+			
+		});
+		
+	var editorObj=new editor("__PUBLIC__","content");
+		function submitClick(){
+
+			/*整合图片*/
+	    var saveImgs=new Array();
+	    $.each($(".saveImg"),function(i,n){
+	    	saveImgs[i]=$(".saveImg:eq("+i+")").val();
+	    });
+	    var maxUrl=saveImgs.join();
+
+	    var saveImgs1=new Array();
+	    $.each($(".saveImg1"),function(i,n){
+	    	saveImgs1[i]=$(".saveImg1:eq("+i+")").val();
+	    });
+	    var maxUrl1=saveImgs1.join();
+
+
+		var pid =$('#classify option:selected').attr('ips');
+
+	   
+
+	    var content=editorObj.editor.getData();
+			$.post(
+				"{:U('Admin/Product/index_Submit')}",
+				{
+					'dataid':$("#dataid").val(),
+					'product_classify_id':$('#classify option:selected') .val(),
+
+					'series_id':$('#classify2 option:selected') .val(),
+					'title':$("#title").val(),
+					'title1':$("#title1").val(),
+					'sort':$("#sort").val(),
+					'link':$("#link").val(),
+					'type':$("#type").val(),
+					'norms':$("#norms").val(),
+					'source':$("#source").val(),
+					'electricize':$("#electricize").val(),
+					'networking':$("#networking").val(),
+					'power':$("#power").val(),
+					'color':$("#color").val(),
+					'maxUrl':maxUrl,
+					'maxUrl1':maxUrl1,
+					'showtime':$("#showtime").val(),
+					'imageUrl':$("#imageUrl").val(),
+					'content':content,
+					'recommen':$("#recommen").val(),
+					'headtitle':$("#headtitle").val(),
+					'keywords':$("#keywords").val(),
+					'description':$("#description").val(),
+					'searchtitle':$("#searchtitle").val(),
+					'copyright':$("#copyright").val(),
+					'author':$("#author").val(),
+					'info':$("#info").val(),
+					'pid':pid,
+
+
+				},
+				function(data){
+					if(data==1){
+		                success("{:U('Admin/Product/index')}");
+					}else{
+						errorNo();
+					}
+				}
+				
+			);
+		}
+	</script>
